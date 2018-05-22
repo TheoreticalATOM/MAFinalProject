@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFollow : MonoBehaviour {
-
+public class CameraControlls : MonoBehaviour 
+{
     public Transform PlayerTransform;
 
     private Vector3 _cameraOffset;
@@ -14,14 +14,12 @@ public class PlayerFollow : MonoBehaviour {
     public bool RotateAroundPlayer = true;
     public bool RotateButton = true;
     public float RotationsSpeed = 5.0f;
-
-
+    public float RotationsSpeedCont = 50.0f;
 
     void Start()
     {
         _cameraOffset = transform.position - PlayerTransform.position;
     }
-
     private bool IsRotateActive
     {
         get
@@ -43,11 +41,17 @@ public class PlayerFollow : MonoBehaviour {
     {
         if (IsRotateActive)
         {
-            Quaternion camTurnAngle =
-                Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationsSpeed, Vector3.up);
-
+            Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationsSpeed, Vector3.up);
             _cameraOffset = camTurnAngle * _cameraOffset;
         }
+
+        if (!IsRotateActive)   //NOTE: Cheatway to make controller rotation work, by just allowing it when the mouse isnt being pressed
+        {
+        Quaternion camTurnAngle2 = Quaternion.AngleAxis(Input.GetAxis("Controler X") * RotationsSpeedCont, Vector3.up);
+        _cameraOffset = camTurnAngle2 * _cameraOffset;
+        }
+
+
 
         Vector3 newPos = PlayerTransform.position + _cameraOffset;
 
@@ -57,4 +61,3 @@ public class PlayerFollow : MonoBehaviour {
             transform.LookAt(PlayerTransform);
     }
 }
-
