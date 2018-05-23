@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class SystemManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+	public bool isNight;
+
+	void Start () 
+	{
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	void Update () 
+	{
+		if(Input.GetKeyDown("n")) //NOTE: PLACEHOLDER CODE TO TOGGLE BETWEEN NIGHT AND DAY
+		{
+			isNight = !isNight;
+		}
 	}
 }
