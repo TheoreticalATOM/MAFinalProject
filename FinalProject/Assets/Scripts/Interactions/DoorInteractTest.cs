@@ -6,12 +6,14 @@ using TMPro;
 
 public class DoorInteractTest : MonoBehaviour {
 	public TextMeshProUGUI interactText;
+	public GameObject TextBorder;
 
 	void OnTriggerStay(Collider other)   //Use for triggers
     {
         if (other.CompareTag("PlayerInteractCollider"))
         {
 			interactText.text = "Press E to Enter";
+			TextBorder.SetActive(true);
 			if(Input.GetButtonDown("Interact"))
 				{
 					Debug.Log("Entered");
@@ -21,5 +23,6 @@ public class DoorInteractTest : MonoBehaviour {
 	void OnTriggerExit(Collider other)
 	{
 		interactText.text = "";
+		TextBorder.SetActive(false);
 	}
 }
