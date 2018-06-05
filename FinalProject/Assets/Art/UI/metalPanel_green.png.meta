@@ -49,7 +49,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 2
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -84,7 +84,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8992fb21aba6eb64d883cfc267934f63
     vertices: []
     indices: 
     edges: []
