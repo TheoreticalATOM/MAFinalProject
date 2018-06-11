@@ -16,11 +16,11 @@ public class SystemManager : MonoBehaviour {
 	public TextMeshProUGUI dateText;
 	public TextMeshProUGUI seasonText;
 	public TextMeshProUGUI timeText;
+	public double second, minute, hour, day, Season, year;
 
 	[Header("TIMESCALE 60 is default for a minute per hour")]
 	public int TIMESCALE = 60;  //Always set back to 60
 
-private double minute, hour, day, second, Season, year;
 	void Start () 
 	{
 		//SET THE CALANDER
