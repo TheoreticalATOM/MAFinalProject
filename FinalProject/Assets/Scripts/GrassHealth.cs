@@ -5,6 +5,7 @@ using UnityEngine;
 public class GrassHealth : MonoBehaviour 
 {
 	public bool GrassAlive;
+	public bool Terraformed;
 	public GameObject  GrassMod;
 
 	public int grassLife;
@@ -16,24 +17,51 @@ public class GrassHealth : MonoBehaviour
 	
 	void Update () 
 	{
-		if (GrassAlive == true)
+		if (Terraformed == true)
 		{
+			grassLife = 100;
+			GrassAlive = true;
 			GrassMod.SetActive(true);
 		}
 
-		if (GrassAlive == false)
+		if (Terraformed == false)
 		{
+			if (GrassAlive == true)
+			{
+			GrassMod.SetActive(true);
+			}
+
+			if (GrassAlive == false)
+			{
 			GrassMod.SetActive(false);
-		}
+			}
 
-		if (grassLife >= 50)
-		{
+			if (grassLife >= 50)
+			{
 			GrassAlive = true;
-		}
+			}
 
-		if (grassLife <50)
-		{
+			if (grassLife <50)
+			{
 			GrassAlive = false;
+			}
 		}
 	}
+ 
+	void OnTriggerEnter(Collider other)
+	{
+		Debug.Log ("TriggerEnter");
+		if (other.CompareTag("TerraformSphere"))
+		{
+			Terraformed = true;
+		}
+	}
+		void OnTriggerStay(Collider other)
+	{
+		if (other.CompareTag("TerraformSphere"))
+		{
+			Terraformed = true;
+		}
+	}
+
 }

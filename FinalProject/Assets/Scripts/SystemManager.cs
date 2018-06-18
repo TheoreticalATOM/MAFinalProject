@@ -7,10 +7,6 @@ using TMPro;
 public class SystemManager : MonoBehaviour {
 
 	public bool isNight;
-	//public int day;
-//	public int season;
-	//public int date;
-//	public int time;
 
 	public TextMeshProUGUI dayText;
 	public TextMeshProUGUI dateText;
@@ -28,6 +24,7 @@ public class SystemManager : MonoBehaviour {
 		Season = 1;
 		year = 1;
 		CalculateSeason();
+		CalculateNight();
 	}
 	
 	void Update () 
@@ -71,6 +68,7 @@ public class SystemManager : MonoBehaviour {
 			hour++;
 			minute = 0;
 			TextCall();
+			CalculateNight();
 		}
 		else if (hour >= 24)
 		{
@@ -182,5 +180,17 @@ public class SystemManager : MonoBehaviour {
 		{
 			seasonText.text = "Winter";
 		}
+	}
+
+	void CalculateNight()
+	{
+		if (hour >= 20)
+		isNight = true;
+
+		if (hour <= 5)
+		isNight = true;
+
+		if (hour>=6 && hour < 20)
+		isNight = false;
 	}
 }

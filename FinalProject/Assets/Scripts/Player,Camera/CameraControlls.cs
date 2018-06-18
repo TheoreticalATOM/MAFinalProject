@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
+[ExecuteInEditMode]
 public class CameraControlls : MonoBehaviour 
 {
     public Transform PlayerTransform;
 
-    private Vector3 _cameraOffset;
+    public Vector3 _cameraOffset;
 
     [Range(0.01f, 1.0f)]
     public float SmoothFactor = 0.5f;
@@ -16,9 +18,16 @@ public class CameraControlls : MonoBehaviour
     public float RotationsSpeed = 5.0f;
     public float RotationsSpeedCont = 50.0f;
 
+     public float PlayerCameraDistance { get; set; }
+    Camera playerCamera;
+    public float zoomSpeed = 35f;
+
     void Start()
     {
         _cameraOffset = transform.position - PlayerTransform.position;
+
+        PlayerCameraDistance = 12f;
+        playerCamera = GetComponent<Camera>();
     }
     private bool IsRotateActive
     {
@@ -37,6 +46,18 @@ public class CameraControlls : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetAxisRaw("Mouse ScrollWheel") != 0 && !EventSystem.current.IsPointerOverGameObject())
+        {
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            playerCamera.fieldOfView -= scroll * zoomSpeed;
+            playerCamera.fieldOfView = Mathf.Clamp(playerCamera.fieldOfView, 0, 180);
+        }
+
+        transform.position = new Vector3(PlayerTransform.position.x, PlayerTransform.position.y + PlayerCameraDistance, PlayerTransform.position.z - PlayerCameraDistance);
+    }
+
     void LateUpdate()
     {
         if (IsRotateActive)
@@ -52,7 +73,7 @@ public class CameraControlls : MonoBehaviour
         }
 
 
-
+    //Camera Zoom
         Vector3 newPos = PlayerTransform.position + _cameraOffset;
 
         transform.position = Vector3.Slerp(transform.position, newPos, SmoothFactor);
