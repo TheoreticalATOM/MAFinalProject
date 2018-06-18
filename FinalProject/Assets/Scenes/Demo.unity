@@ -8813,6 +8813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 516752589}
   - component: {fileID: 516752588}
+  - component: {fileID: 516752590}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -8869,6 +8870,19 @@ Transform:
   m_Father: {fileID: 1930590742}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 23.623001, y: -32.326, z: 57.224003}
+--- !u!114 &516752590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 516752587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e5d9001c4672043a550f83f84964fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SystemStats: {fileID: 0}
+  SunLight: {fileID: 516752588}
 --- !u!4 &517858849 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4771345808558602, guid: ce048be4922240940bc0e20b060edd90,
@@ -23454,7 +23468,8 @@ GameObject:
   - component: {fileID: 1365657989}
   - component: {fileID: 1365657988}
   - component: {fileID: 1365657987}
-  - component: {fileID: 1365657986}
+  - component: {fileID: 1365657990}
+  - component: {fileID: 1365657991}
   m_Layer: 0
   m_Name: SkyCam
   m_TagString: Untagged
@@ -23462,13 +23477,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1365657986
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1365657985}
-  m_Enabled: 1
 --- !u!124 &1365657987
 Behaviour:
   m_ObjectHideFlags: 0
@@ -23525,6 +23533,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 20, y: -150, z: 0}
+--- !u!114 &1365657990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1365657985}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5378998db5ba9488d08a4e3b80821a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Width: 1024
+  m_Height: 576
+  m_AutoAspect: 1
+  m_FramePerSecond: 15
+  m_Repeat: 0
+  m_Quality: 15
+  m_BufferSize: 10
+  WorkerPriority: 1
+--- !u!114 &1365657991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1365657985}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3729fda5a6290194ba951a6cf75459e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1368369658 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4771345808558602, guid: ce048be4922240940bc0e20b060edd90,
@@ -27882,7 +27920,7 @@ Camera:
   m_GameObject: {fileID: 1601144640}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -27894,7 +27932,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 60
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -27905,7 +27943,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -27916,13 +27954,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1601144640}
-  m_LocalRotation: {x: 0.66436434, y: -0.24211572, z: 0.24211572, w: 0.66436434}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalRotation: {x: 0.66446304, y: -0.24184473, z: 0.24184473, w: 0.66446304}
+  m_LocalPosition: {x: 0, y: 80, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1491066187}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 40}
 --- !u!4 &1602860968 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4771345808558602, guid: ce048be4922240940bc0e20b060edd90,
@@ -35119,6 +35157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b59cb7a7ff1f64eb49a6559aa6660e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TIMESCALE: 60
   isNight: 0
   dayText: {fileID: 1954929746}
   dateText: {fileID: 654179117}
@@ -35130,7 +35169,13 @@ MonoBehaviour:
   day: 0
   Season: 0
   year: 0
-  TIMESCALE: 60
+  sunny: 0
+  raining: 0
+  snowing: 0
+  thunder: 0
+  cold: 0
+  temperature: 0
+  moisture: 0
 --- !u!1001 &2053884412
 Prefab:
   m_ObjectHideFlags: 0
@@ -36356,6 +36401,47 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce048be4922240940bc0e20b060edd90, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2131827869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2131827871}
+  - component: {fileID: 2131827870}
+  m_Layer: 0
+  m_Name: RainSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2131827870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131827869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb24f9ef8cc38d74bbb10704838aa5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SystemStats: {fileID: 0}
+--- !u!4 &2131827871
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131827869}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 120.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2131839697 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4771345808558602, guid: ce048be4922240940bc0e20b060edd90,

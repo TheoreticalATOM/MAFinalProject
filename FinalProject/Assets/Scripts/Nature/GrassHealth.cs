@@ -7,12 +7,15 @@ public class GrassHealth : MonoBehaviour
 	public bool GrassAlive;
 	public bool Terraformed;
 	public GameObject  GrassMod;
+	public GameObject snowMod;
 
 	public int grassLife;
+	public int Snowy;
 
 	void Start () 
 	{
 		GrassMod = this.transform.GetChild(0).gameObject;
+		snowMod = this.transform.GetChild(1).gameObject;
 	}
 	
 	void Update () 
@@ -45,6 +48,15 @@ public class GrassHealth : MonoBehaviour
 			{
 			GrassAlive = false;
 			}
+
+			if (Snowy >=50)
+			{
+				snowMod.SetActive(true);
+			}
+			if (Snowy <50)
+			{
+				snowMod.SetActive(false);
+			}
 		}
 	}
  
@@ -54,6 +66,11 @@ public class GrassHealth : MonoBehaviour
 		if (other.CompareTag("TerraformSphere"))
 		{
 			Terraformed = true;
+		}
+
+		if (other.CompareTag("Snow"))
+		{
+			Snowy += 1;
 		}
 	}
 		void OnTriggerStay(Collider other)

@@ -6,16 +6,25 @@ using TMPro;
 
 public class SystemManager : MonoBehaviour {
 
-	public bool isNight;
+	[Header("TIMESCALE 60 is default for a minute per hour")]
+	public int TIMESCALE = 60;  //Always set back to 60
 
+	[Header("Calander")]
+	public bool isNight;
 	public TextMeshProUGUI dayText;
 	public TextMeshProUGUI dateText;
 	public TextMeshProUGUI seasonText;
 	public TextMeshProUGUI timeText;
 	public double second, minute, hour, day, Season, year;
 
-	[Header("TIMESCALE 60 is default for a minute per hour")]
-	public int TIMESCALE = 60;  //Always set back to 60
+	[Header("Weather")]
+	public bool sunny;
+	public bool raining;
+	public bool snowing;
+	public bool thunder;
+	public bool cold;
+	public int temperature;
+	public int moisture;
 
 	void Start () 
 	{
@@ -25,11 +34,13 @@ public class SystemManager : MonoBehaviour {
 		year = 1;
 		CalculateSeason();
 		CalculateNight();
+		CalculateWeather();
 	}
 	
 	void Update () 
 	{
 		CalculateTime();
+		CalculateWeather(); //Remove after demonstration to improve efficiancy.  Will only update the weather on the hour instead. 
 	}
 
 	void TextCall()
@@ -69,6 +80,7 @@ public class SystemManager : MonoBehaviour {
 			minute = 0;
 			TextCall();
 			CalculateNight();
+			CalculateWeather();
 		}
 		else if (hour >= 24)
 		{
@@ -192,5 +204,54 @@ public class SystemManager : MonoBehaviour {
 
 		if (hour>=6 && hour < 20)
 		isNight = false;
+	}
+
+	void CalculateWeather()
+	{
+		if (temperature >= 50 && moisture <= 49) // Make it Sunny
+		{
+		sunny = true;
+		raining = false;
+		snowing = false;
+		thunder = false;
+		cold = false;
+		}
+
+		else if (temperature >= 50 && moisture >= 50) // Make it Thunder
+		{
+		sunny = false;
+		raining = false;
+		snowing = false;
+		thunder = true;
+		cold = false;
+		}
+
+		else if (temperature <= 0 && moisture >= 50) // Make it Snow
+		{
+		sunny = false;
+		raining = false;
+		snowing = true;
+		thunder = false;
+		cold = true;
+		}
+
+		else if (temperature >= 1 && temperature <= 49 && moisture >= 50) // Make it Rain , Not Cold Not Sunny 
+		{
+		sunny = false;
+		raining = true;
+		snowing = false;
+		thunder = false;
+		cold = false;
+		}
+
+		else if (temperature <=0 && moisture <= 49) // Cold No Snow
+		{
+		sunny = false;
+		raining = false;
+		snowing = false;
+		thunder = false;
+		cold = true;
+		}
+
 	}
 }

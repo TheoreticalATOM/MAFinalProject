@@ -17,8 +17,8 @@ public class CameraControlls : MonoBehaviour
     public bool RotateButton = true;
     public float RotationsSpeed = 5.0f;
     public float RotationsSpeedCont = 50.0f;
-
-     public float PlayerCameraDistance { get; set; }
+    //Zoom Stuff
+    public float PlayerCameraDistance { get; set; }
     Camera playerCamera;
     public float zoomSpeed = 35f;
 
