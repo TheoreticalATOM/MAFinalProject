@@ -5,6 +5,7 @@ using UnityEngine;
 public class Rain : MonoBehaviour {
 
 public SystemManager SystemStats;
+public ParticleSystem PartRain;
 	void Start () 
 	{
 		SystemStats = GameObject.Find("Manager").GetComponent<SystemManager>();
@@ -15,8 +16,11 @@ public SystemManager SystemStats;
 	{
 		if(SystemStats.raining == true)
 		{
-			Debug.Log("IsRaining");
-			//TODO: Rain Effects
+			PartRain.Play();
+		}
+		if(SystemStats.raining == false)
+		{
+			PartRain.Stop();
 		}
 
 		if(SystemStats.snowing == true)

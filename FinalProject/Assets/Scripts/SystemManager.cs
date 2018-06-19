@@ -23,8 +23,8 @@ public class SystemManager : MonoBehaviour {
 	public bool snowing;
 	public bool thunder;
 	public bool cold;
-	public int temperature;
-	public int moisture;
+	public float temperature;
+	public float moisture;
 
 	void Start () 
 	{
@@ -40,7 +40,8 @@ public class SystemManager : MonoBehaviour {
 	void Update () 
 	{
 		CalculateTime();
-		CalculateWeather(); //Remove after demonstration to improve efficiancy.  Will only update the weather on the hour instead. 
+		CalculateWeather(); //Maybe Remove after demonstration to improve efficiancy.  Will only update the weather on the hour instead. 
+		CalculateTemp();	//Maybe Remove after demonstration to improve efficiancy.  Will only update the weather on the hour instead.
 	}
 
 	void TextCall()
@@ -253,5 +254,10 @@ public class SystemManager : MonoBehaviour {
 		cold = true;
 		}
 
+	}
+
+	void CalculateTemp()
+	{
+		//I dont really know how i want temperature to be calculated. 
 	}
 }

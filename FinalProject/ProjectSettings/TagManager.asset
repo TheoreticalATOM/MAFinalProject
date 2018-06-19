@@ -7,6 +7,7 @@ TagManager:
   - PlayerInteractCollider
   - Ground
   - TerraformSphere
+  - BuildableSpace
   layers:
   - Default
   - TransparentFX

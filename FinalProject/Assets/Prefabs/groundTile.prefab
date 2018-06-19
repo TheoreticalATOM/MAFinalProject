@@ -86,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1402819436505136}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 42.439156, y: 18.55173, z: 136.84158}
+  m_LocalPosition: {x: 0, y: -0.012805999, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4809286834242244}
@@ -280,9 +280,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ee64722efc23b4c89a29d67b2a2c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SystemStats: {fileID: 0}
   GrassAlive: 0
   Terraformed: 0
   GrassMod: {fileID: 0}
   snowMod: {fileID: 0}
   grassLife: 0
   Snowy: 0
+  watered: 0
+  sunned: 0
+  DrySpeed: 0.001
+  WaterSpeed: 0.005
+  SunSpeed: 0.005
+  SnowSpeed: 0.005
+  MeltSpeed: 0.005

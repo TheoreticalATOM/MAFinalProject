@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class GrassHealth : MonoBehaviour 
 {
+	public SystemManager SystemStats;
 	public bool GrassAlive;
 	public bool Terraformed;
 	public GameObject  GrassMod;
 	public GameObject snowMod;
 
-	public int grassLife;
-	public int Snowy;
+	public float grassLife;
+	public float Snowy;
+	public float watered;
+	public float sunned;
+	public float DrySpeed;
+	public float WaterSpeed;
+	public float SunSpeed;
+	public float SnowSpeed;
+	public float MeltSpeed;
 
 	void Start () 
 	{
+		SystemStats = GameObject.Find("Manager").GetComponent<SystemManager>();
 		GrassMod = this.transform.GetChild(0).gameObject;
 		snowMod = this.transform.GetChild(1).gameObject;
 	}
@@ -25,6 +34,16 @@ public class GrassHealth : MonoBehaviour
 			grassLife = 100;
 			GrassAlive = true;
 			GrassMod.SetActive(true);
+			watered = 100;
+			sunned = 100;
+			if(SystemStats.snowing == true)
+			{
+				Snowy += SnowSpeed;
+			}
+			if(SystemStats.snowing == false)
+			{
+				Snowy -=SnowSpeed;
+			}
 		}
 
 		if (Terraformed == false)
@@ -57,6 +76,35 @@ public class GrassHealth : MonoBehaviour
 			{
 				snowMod.SetActive(false);
 			}
+
+			if(SystemStats.raining == true)
+			{
+				watered += WaterSpeed;
+				if(Snowy > 0)
+				{
+					Snowy -= MeltSpeed;
+				}
+			}
+			if(SystemStats.raining == false) 
+			{
+				watered -= DrySpeed;
+			}
+			if(SystemStats.sunny == true)
+			{
+				sunned += SunSpeed;
+				if(Snowy > 0)
+				{
+					Snowy -= MeltSpeed;
+				}
+			}
+			if(SystemStats.sunny == false)
+			{
+				sunned -= DrySpeed;
+			}
+			if(SystemStats.snowing == true)
+			{
+				Snowy += SnowSpeed;
+			}
 		}
 	}
  
@@ -66,11 +114,6 @@ public class GrassHealth : MonoBehaviour
 		if (other.CompareTag("TerraformSphere"))
 		{
 			Terraformed = true;
-		}
-
-		if (other.CompareTag("Snow"))
-		{
-			Snowy += 1;
 		}
 	}
 		void OnTriggerStay(Collider other)
