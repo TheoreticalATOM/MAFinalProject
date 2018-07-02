@@ -11,6 +11,7 @@ public class RadioTower : MonoBehaviour
 	public bool built;
 	public GameObject RadioTowerMod;
 	public GameObject RadioBuildPoint;
+	public GameObject WeatherPanel;
 
 	void Start()
 	{
@@ -46,7 +47,9 @@ public class RadioTower : MonoBehaviour
 			{
 				if(Input.GetButtonDown("Interact"))
 				{
-					Debug.Log("UsingConsole");
+					WeatherPanel.SetActive(true);
+					Cursor.visible = true;
+               		Cursor.lockState = CursorLockMode.None;
 				}
 			}
         }

@@ -6,6 +6,8 @@ using TMPro;
 
 public class SystemManager : MonoBehaviour {
 
+	public bool InShip;
+
 	[Header("TIMESCALE 60 is default for a minute per hour")]
 	public int TIMESCALE = 60;  //Always set back to 60
 
