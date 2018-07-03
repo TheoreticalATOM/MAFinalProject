@@ -21,16 +21,16 @@ public class Sleep : MonoBehaviour {
 		if (isSkipping == true)
 		{
         Time.timeScale = skipSpeed; //NOTE: how quickly we skip to day.
+			if(SystemStats.hour == 7)
+			{
+			isSkipping =false;
+			Time.timeScale = 1;
+			}
 		}
 	}
 
 	public void Update()
 	{
-		if(SystemStats.hour == 7)
-		{
-		isSkipping =false;
-		Time.timeScale = 1;
-		}
 	}
 
 }

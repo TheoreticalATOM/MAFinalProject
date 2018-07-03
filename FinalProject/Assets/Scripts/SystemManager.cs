@@ -28,6 +28,25 @@ public class SystemManager : MonoBehaviour {
 	public float temperature;
 	public float moisture;
 
+	[Header("Temperature Per Season")]
+	public float SpringTempRangeMin;
+	public float SpringTempRangeMax; 
+	public float SummerTempRangeMin;
+	public float SummerTempRangeMax; 
+	public float AutumnTempRangeMin;
+	public float AutumnTempRangeMax; 
+	public float WinterTempRangeMin;
+	public float WinterTempRangeMax; 
+	[Header("Moisture Per Season")]
+	public float SpringMoistRangeMin;
+	public float SpringMoistRangeMax; 
+	public float SummerMoistRangeMin;
+	public float SummerMoistRangeMax; 
+	public float AutumnMoistRangeMin;
+	public float AutumnMoistRangeMax; 
+	public float WinterMoistRangeMin;
+	public float WinterMoistRangeMax; 
+
 	void Start () 
 	{
 		//SET THE CALANDER
@@ -37,13 +56,13 @@ public class SystemManager : MonoBehaviour {
 		CalculateSeason();
 		CalculateNight();
 		CalculateWeather();
+		CalculateTemp();
+		Calculatemoisture();
 	}
 	
 	void Update () 
 	{
 		CalculateTime();
-		CalculateWeather(); //Maybe Remove after demonstration to improve efficiancy.  Will only update the weather on the hour instead. 
-		CalculateTemp();	//Maybe Remove after demonstration to improve efficiancy.  Will only update the weather on the hour instead.
 	}
 
 	void TextCall()
@@ -84,6 +103,8 @@ public class SystemManager : MonoBehaviour {
 			TextCall();
 			CalculateNight();
 			CalculateWeather();
+			CalculateTemp();
+			Calculatemoisture();
 		}
 		else if (hour >= 24)
 		{
@@ -260,6 +281,40 @@ public class SystemManager : MonoBehaviour {
 
 	void CalculateTemp()
 	{
-		//I dont really know how i want temperature to be calculated. 
+		if(Season == 1)//Spring
+		{
+			temperature = Random.Range(SpringTempRangeMin, SpringTempRangeMax);
+		}
+		if(Season == 2)//Summer
+		{
+			temperature = Random.Range(SummerTempRangeMin, SummerTempRangeMax);
+		}
+		if(Season == 3)//Autumn
+		{
+			temperature = Random.Range(AutumnTempRangeMin, AutumnTempRangeMax);
+		}
+		if(Season == 4)//Winter
+		{
+			temperature = Random.Range(WinterTempRangeMin, WinterTempRangeMax);
+		}
+	}
+		void Calculatemoisture()
+	{
+		if(Season == 1)//Spring
+		{
+			moisture = Random.Range(SpringMoistRangeMin, SpringMoistRangeMax);
+		}
+		if(Season == 2)//Summer
+		{
+			moisture = Random.Range(SummerMoistRangeMin, SummerMoistRangeMax);
+		}
+		if(Season == 3)//Autumn
+		{
+			moisture = Random.Range(AutumnMoistRangeMin, AutumnMoistRangeMax);
+		}
+		if(Season == 4)//Winter
+		{
+			moisture = Random.Range(WinterMoistRangeMin, WinterMoistRangeMax);
+		}
 	}
 }

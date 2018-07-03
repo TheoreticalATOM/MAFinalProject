@@ -25,10 +25,14 @@ public class GrassHealth : MonoBehaviour
 		SystemStats = GameObject.Find("Manager").GetComponent<SystemManager>();
 		GrassMod = this.transform.GetChild(0).gameObject;
 		snowMod = this.transform.GetChild(1).gameObject;
+		watered = 30;
+		sunned = 30;
 	}
 	
 	void Update () 
 	{
+		grassLife = sunned + watered;
+
 		if (Terraformed == true)
 		{
 			grassLife = 100;
@@ -58,12 +62,12 @@ public class GrassHealth : MonoBehaviour
 			GrassMod.SetActive(false);
 			}
 
-			if (grassLife >= 50)
+			if (grassLife >= 100)
 			{
 			GrassAlive = true;
 			}
 
-			if (grassLife <50)
+			if (grassLife <100)
 			{
 			GrassAlive = false;
 			}

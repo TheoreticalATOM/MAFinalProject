@@ -9,6 +9,7 @@ public class WaterHeight : MonoBehaviour
 	public Vector3 MaxHeight;
 	public GameObject Water;
 	public float WaterPos;
+	public float speed;
 
 
 	void Start () 
@@ -24,12 +25,12 @@ public class WaterHeight : MonoBehaviour
 
 		if(SystemStats.raining == true && WaterPos < MaxHeight.y)
 		{
-			transform.position += Vector3.up * Time.deltaTime;
+			transform.position += Vector3.up * speed * Time.deltaTime;
 		}
 
 		if(SystemStats.sunny == true && WaterPos >MinHeight.y)
 		{
-			transform.position -= Vector3.up * Time.deltaTime;
+			transform.position -= Vector3.up * speed * Time.deltaTime;
 		}
 	}
 }
