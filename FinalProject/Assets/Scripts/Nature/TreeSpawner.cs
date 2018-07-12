@@ -86,7 +86,6 @@ public class TreeSpawner : MonoBehaviour {
 	}
 		void OnTriggerEnter(Collider other)
 	{
-		Debug.Log ("TriggerEnter");
 		if (other.CompareTag("TerraformSphere"))
 		{
 			Terraformed = true;

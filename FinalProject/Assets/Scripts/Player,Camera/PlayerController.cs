@@ -2,47 +2,83 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
-    private Animator _animator;
-    private CharacterController _characterController;
-    public float Speed = 5.0f;
-    public float RotationSpeed = 240.0f;
-    private float Gravity = 20.0f;
-    private Vector3 _moveDir = Vector3.zero;
+[RequireComponent(typeof(PlayerMotor))]
+public class PlayerController : MonoBehaviour {
 
-    // Use this for initialization
-    void Start()
-    {
-        _animator = GetComponent<Animator>();
-        _characterController = GetComponent<CharacterController>();
-    }
+	public Interactable focus;	// Our current focus: Item, Enemy etc.
 
-    // Update is called once per frame
-    void Update()
-    {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+	public LayerMask movementMask;	// Filter out everything not walkable
 
-        Vector3 camForward_Dir = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-        Vector3 move = v * camForward_Dir + h * Camera.main.transform.right;
+	Camera cam;			// Reference to our camera
+	PlayerMotor motor;	// Reference to our motor
 
-        if (move.magnitude > 1f) move.Normalize();
+	// Get references
+	void Start () {
+		cam = Camera.main;
+		motor = GetComponent<PlayerMotor>();
+	}
+	
+	// Update is called once per frame
+	void Update () {
 
-        move = transform.InverseTransformDirection(move);
+		// If we press left mouse
+		if (Input.GetMouseButtonDown(0))
+		{
+			// We create a ray
+			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
 
-        float turnAmount = Mathf.Atan2(move.x, move.z);
+			// If the ray hits
+			if (Physics.Raycast(ray, out hit, 100, movementMask))
+			{
+				motor.MoveToPoint(hit.point);   // Move to where we hit
+				RemoveFocus();
+			}
+		}
 
-        transform.Rotate(0, turnAmount *  RotationSpeed * Time.deltaTime, 0);
+		// If we press right mouse
+		if (Input.GetMouseButtonDown(1))
+		{
+			// We create a ray
+			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
 
-        if (_characterController.isGrounded)
-        {
-            _animator.SetBool("run", move.magnitude> 0);
-            _moveDir = transform.forward * move.magnitude;
-            _moveDir *= Speed;
-        }
+			// If the ray hits
+			if (Physics.Raycast(ray, out hit, 100))
+			{
+				Interactable interactable = hit.collider.GetComponent<Interactable>();
+				if (interactable != null)
+				{
+					SetFocus(interactable);
+				}
+			}
+		}
+	}
 
-        _moveDir.y -= Gravity * Time.deltaTime;
-        _characterController.Move(_moveDir * Time.deltaTime);
-    }
+	// Set our focus to a new focus
+	void SetFocus (Interactable newFocus)
+	{
+		// If our focus has changed
+		if (newFocus != focus)
+		{
+			// Defocus the old one
+			if (focus != null)
+				focus.OnDefocused();
+
+			focus = newFocus;	// Set our new focus
+			motor.FollowTarget(newFocus);	// Follow the new focus
+		}
+		
+		newFocus.OnFocused(transform);
+	}
+
+	// Remove our current focus
+	void RemoveFocus ()
+	{
+		if (focus != null)
+			focus.OnDefocused();
+
+		focus = null;
+		motor.StopFollowingTarget();
+	}
 }

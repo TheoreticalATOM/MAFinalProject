@@ -1,63 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class RadioTower : MonoBehaviour 
+public class RadioTower : Interactable {
+
+public GameObject RadioTowerMod;
+public GameObject BuildPoint;
+
+public override void Interact()
 {
-	public TextMeshProUGUI interactText;
-	public GameObject TextBorder;
-	public bool built;
-	public GameObject RadioTowerMod;
-	public GameObject RadioBuildPoint;
-	public GameObject WeatherPanel;
+	base.Interact();
 
-	void Start()
-	{
-		RadioTowerMod.SetActive(false);
-		RadioBuildPoint.SetActive(true);
-	}
+	BuildTower();
+
+}
 	
-	void OnTriggerStay(Collider other)   //Use for triggers
-    {
-		if (built == false)
-		{
-			if (other.CompareTag("PlayerInteractCollider"))
-    		{
-				interactText.text = "Press E to Build Radio Tower";
-				TextBorder.SetActive(true);
-				{
-					if(Input.GetButtonDown("Interact"))
-					{
-						RadioTowerMod.SetActive(true);
-						built = true;
-						RadioBuildPoint.SetActive(false);
-					}
-				}
-        	}
-		}
+void BuildTower()
+{
+	RadioTowerMod.SetActive(true);
+	BuildPoint.SetActive(false);
+}
 
-		if (built == true)
-		{
-		if (other.CompareTag("PlayerInteractCollider"))
-        {
-			interactText.text = "Press E to Use";
-			TextBorder.SetActive(true);
-			{
-				if(Input.GetButtonDown("Interact"))
-				{
-					WeatherPanel.SetActive(true);
-					Cursor.visible = true;
-               		Cursor.lockState = CursorLockMode.None;
-				}
-			}
-        }
-		}
-    }
-	void OnTriggerExit(Collider other)
-	{
-		TextBorder.SetActive(false);
-		interactText.text = "";
-	}
 }

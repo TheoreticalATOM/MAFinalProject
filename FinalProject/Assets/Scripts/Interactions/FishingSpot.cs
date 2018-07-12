@@ -1,31 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class FishingSpot : MonoBehaviour {
+public class FishingSpot : Interactable {
 
-	public TextMeshProUGUI interactText;
-	public GameObject TextBorder;
 
-	void OnTriggerStay(Collider other)   //Use for triggers
-    {
-        if (other.CompareTag("PlayerInteractCollider"))
-        {
-			interactText.text = "Press E to Fish";
-			TextBorder.SetActive(true);
-			{
-				if(Input.GetButtonDown("Interact"))
-				{
-					Debug.Log("Did a Fish");
-				}
-			}
-        }
-    }
-	void OnTriggerExit(Collider other)
+public override void Interact()
+{
+	base.Interact();
+
+	Fish();
+
+}
+
+
+	void Start () {
+		
+	}
+	
+
+	void Update () {
+		
+	}
+
+	public void Fish()
 	{
-		TextBorder.SetActive(false);
-		interactText.text = "";
+		Debug.Log("Fishing");
 	}
 }

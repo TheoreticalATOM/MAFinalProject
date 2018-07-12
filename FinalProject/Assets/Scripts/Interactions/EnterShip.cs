@@ -2,38 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class EnterShip : MonoBehaviour {
-	public TextMeshProUGUI interactText;
-	public GameObject TextBorder;
-	public GameObject ShipMenu;
-	private SystemManager SystemStats;
+public class EnterShip : Interactable {
 
-	void Start ()
+public GameObject ShipMenu;
+
+public override void Interact()
+{
+	base.Interact();
+
+	ShipEnter();
+
+}
+
+	void ShipEnter()
 	{
-		SystemStats = GameObject.Find("Manager").GetComponent<SystemManager>();
-		ShipMenu.SetActive(false);
+		ShipMenu.SetActive(true);
 	}
 
-	void OnTriggerStay(Collider other)   //Use for triggers
-    {
-        if (other.CompareTag("PlayerInteractCollider"))
-        {
-			interactText.text = "Press E to Access Ship";
-			TextBorder.SetActive(true);
-			if(Input.GetButtonDown("Interact") && SystemStats.InShip == false)
-				{
-					ShipMenu.SetActive(true);
-					SystemStats.InShip = true;
-					Cursor.visible = true;
-               		Cursor.lockState = CursorLockMode.None;
-				}
-        }
-    }
-	void OnTriggerExit(Collider other)
-	{
-		interactText.text = "";
-		TextBorder.SetActive(false);
-	}
 }

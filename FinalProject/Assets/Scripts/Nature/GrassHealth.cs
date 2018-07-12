@@ -114,7 +114,6 @@ public class GrassHealth : MonoBehaviour
  
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log ("TriggerEnter");
 		if (other.CompareTag("TerraformSphere"))
 		{
 			Terraformed = true;
