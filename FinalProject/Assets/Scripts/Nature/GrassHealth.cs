@@ -49,7 +49,8 @@ public class GrassHealth : MonoBehaviour
 				Snowy -=SnowSpeed;
 			}
 		}
-
+/* 
+//NOTE: Old System that tracked all tiles all the time
 		if (Terraformed == false)
 		{
 			if (GrassAlive == true)
@@ -109,7 +110,7 @@ public class GrassHealth : MonoBehaviour
 			{
 				Snowy += SnowSpeed;
 			}
-		}
+		}*/
 	}
  
 	void OnTriggerEnter(Collider other)
