@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class ResorceManager : MonoBehaviour {
-
+public BuildController BuildStats;
 public TextMeshProUGUI CarbonStatText;
 public TextMeshProUGUI PowerStatText;
 public TextMeshProUGUI WaterStatText;
@@ -20,9 +20,11 @@ public float ShipPower;
 public float ShipWater;
 public float PowerSpare;
 public float PowerUsed;
+public float Battery;
 
 	void Start () 
 	{
+		BuildStats = GameObject.Find("MainCamera").GetComponent<BuildController>();
 		ShipPower = 30;
 		StartingCarbon = 30;
 		ShipWater = 30;
@@ -40,8 +42,13 @@ public float PowerUsed;
 		WaterStatText.text = "" + WaterStat;
 
 		//CarbonStat = StartingCarbon;
-		PowerStat = ShipPower;
+		PowerStat = ShipPower + Battery;
 		WaterStat = ShipWater;
 		PowerSpare = PowerStat - PowerUsed;
+
+		if(Battery >= 100)
+		{
+			Battery = 100;
+		}
 	}
 }

@@ -6,12 +6,22 @@ using TMPro;
 
 public class Sleep : MonoBehaviour {
 	private SystemManager SystemStats;
+	public GameObject shipPanel;
 	public int skipSpeed;
 	public bool isSkipping;
 
 	void Start () 
 	{
 	SystemStats = GameObject.Find("Manager").GetComponent<SystemManager>();	
+	shipPanel.SetActive(false);
+	}
+
+	public void Update()
+	{
+		if(Input.GetKeyDown("t"))
+		{
+			shipPanel.SetActive(true);
+		}
 	}
 
 	public void SleepToMorning ()
@@ -21,7 +31,7 @@ public class Sleep : MonoBehaviour {
 		if (isSkipping == true)
 		{
         Time.timeScale = skipSpeed; //NOTE: how quickly we skip to day.
-			if(SystemStats.hour == 7)
+			if(SystemStats.hour == 7) //NOTE: Time to skip too.
 			{
 			isSkipping =false;
 			Time.timeScale = 1;
@@ -29,8 +39,54 @@ public class Sleep : MonoBehaviour {
 		}
 	}
 
-	public void Update()
+	public void SleepToMidnight()
 	{
+		isSkipping = true;
+
+		if (isSkipping == true)
+		{
+        Time.timeScale = skipSpeed; 
+			if(SystemStats.hour == 0)
+			{
+			isSkipping =false;
+			Time.timeScale = 1;
+			}
+		}
+	}
+
+	public void SleepToMidDay()
+	{
+		isSkipping = true;
+
+		if (isSkipping == true)
+		{
+        Time.timeScale = skipSpeed; 
+			if(SystemStats.hour == 12)
+			{
+			isSkipping =false;
+			Time.timeScale = 1;
+			}
+		}
+	}
+
+		public void SleepToNight()
+	{
+		isSkipping = true;
+
+		if (isSkipping == true)
+		{
+        Time.timeScale = skipSpeed; 
+			if(SystemStats.hour == 19)
+			{
+			isSkipping =false;
+			Time.timeScale = 1;
+			}
+		}
+	}
+
+	public void Close()
+	{
+		shipPanel.SetActive(false);
 	}
 
 }

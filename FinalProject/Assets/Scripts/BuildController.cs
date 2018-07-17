@@ -10,18 +10,23 @@ public GameObject BuildPanel;
 public GameObject DockPanelStuff;
 public GameObject WaterTankPanelStuff;
 public GameObject RadioTowerPanelStuff;
+public GameObject SolarFarmPanelStuff;
 public GameObject BuildSpotDock;
 public GameObject BuildSpotTank;
 public GameObject BuildSpotTower;
-public GameObject FishingDock;
-public GameObject WaterTank;
-public GameObject RadioTower;
+public GameObject BuildSpotSolar;
+public GameObject FishingDockMod;
+public GameObject WaterTankMod;
+public GameObject RadioTowerMod;
+public GameObject SolarFarmMod;
 public bool DockActive;
 public bool TankActive;
 public bool TowerActive;
+public bool SolarFarmActive;
 public bool DockBuilt;
 public bool TankBuilt;
 public bool TowerBuilt;
+public bool SolarFarmBuilt;
 
 
 	void Start () 
@@ -31,12 +36,19 @@ public bool TowerBuilt;
 		DockPanelStuff.SetActive(false);
 		WaterTankPanelStuff.SetActive(false);
 		RadioTowerPanelStuff.SetActive(false);
+		SolarFarmPanelStuff.SetActive(false);
 		DockActive = false;
 		TankActive = false;
 		TowerActive = false;
+		SolarFarmActive = false;
 		BuildSpotDock.SetActive(true);
 		BuildSpotTank.SetActive(true);
 		BuildSpotTower.SetActive(true);
+		BuildSpotSolar.SetActive(true);
+		FishingDockMod.SetActive(false);
+		WaterTankMod.SetActive(false);
+		RadioTowerMod.SetActive(false);
+		SolarFarmMod.SetActive(false);
 	}
 	
 
@@ -55,10 +67,11 @@ public bool TowerBuilt;
 						DockPanelStuff.SetActive(true);
 						WaterTankPanelStuff.SetActive(false);
 						RadioTowerPanelStuff.SetActive(false);
+						SolarFarmPanelStuff.SetActive(false);
 						DockActive = true;
 						TankActive = false;
 						TowerActive = false;
-						DockBuilt = true;
+						SolarFarmActive = false;
 					}
 					if (hit.transform.name == "BuildSpot_WaterTank" )
 					{
@@ -66,10 +79,11 @@ public bool TowerBuilt;
 						DockPanelStuff.SetActive(false);
 						WaterTankPanelStuff.SetActive(true);
 						RadioTowerPanelStuff.SetActive(false);
+						SolarFarmPanelStuff.SetActive(false);
 						DockActive = false;
 						TankActive = true;
 						TowerActive = false;
-						TankBuilt = true;
+						SolarFarmActive = false;
 
 					}
 					if (hit.transform.name == "BuildSpot_RadioTower" )
@@ -78,10 +92,23 @@ public bool TowerBuilt;
 						DockPanelStuff.SetActive(false);
 						WaterTankPanelStuff.SetActive(false);
 						RadioTowerPanelStuff.SetActive(true);
+						SolarFarmPanelStuff.SetActive(false);
 						DockActive = false;
 						TankActive = false;
 						TowerActive = true;
-						TowerBuilt = true;
+						SolarFarmActive = false;
+					}
+					if (hit.transform.name == "BuildSpot_SolarFarm" )
+					{
+ 						BuildPanel.SetActive(true);
+						DockPanelStuff.SetActive(false);
+						WaterTankPanelStuff.SetActive(false);
+						RadioTowerPanelStuff.SetActive(false);
+						SolarFarmPanelStuff.SetActive(true);
+						DockActive = false;
+						TankActive = false;
+						TowerActive = false;
+						SolarFarmActive = true;
 					}
 				}
 			}
@@ -123,9 +150,10 @@ public bool TowerBuilt;
 			{
 				resourceStats.CarbonStat -= 10;
 				resourceStats.PowerUsed += 5;
-				FishingDock.SetActive(true);
+				FishingDockMod.SetActive(true);
 				BuildPanel.SetActive(false);
 				BuildSpotDock.SetActive(false);
+				DockBuilt = true;
 			}
 		}
 
@@ -135,9 +163,10 @@ public bool TowerBuilt;
 			{
 				resourceStats.CarbonStat -= 20;
 				resourceStats.PowerUsed += 5;
-				WaterTank.SetActive(true);
+				WaterTankMod.SetActive(true);
 				BuildPanel.SetActive(false);
 				BuildSpotTank.SetActive(false);
+				TankBuilt = true;
 			}
 		}
 
@@ -147,9 +176,23 @@ public bool TowerBuilt;
 			{
 				resourceStats.CarbonStat -= 10;
 				resourceStats.PowerUsed += 5;
-				RadioTower.SetActive(true);
+				RadioTowerMod.SetActive(true);
 				BuildPanel.SetActive(false);
 				BuildSpotTower.SetActive(false);
+				TowerBuilt = true;
+			}
+		}
+
+		if(SolarFarmActive == true)
+		{
+			if(resourceStats.CarbonStat >= 30 && resourceStats.PowerSpare >= 0)
+			{
+				resourceStats.CarbonStat -= 30;
+				//resourceStats.PowerUsed += 5;
+				SolarFarmMod.SetActive(true);
+				BuildPanel.SetActive(false);
+				BuildSpotSolar.SetActive(false);
+				SolarFarmBuilt = true;
 			}
 		}
 	}

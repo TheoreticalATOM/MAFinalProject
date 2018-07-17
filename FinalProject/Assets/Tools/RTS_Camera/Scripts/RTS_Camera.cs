@@ -58,8 +58,8 @@ namespace RTS_Cam
         #region MapLimits
 
         public bool limitMap = true;
-        public float limitX = 50f; //x limit of map
-        public float limitY = 50f; //z limit of map
+        public float limitX = 100f; //x limit of map
+        public float limitY = 100f; //z limit of map
 
         #endregion
 

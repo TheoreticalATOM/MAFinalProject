@@ -6,6 +6,8 @@ using TMPro;
 
 public class SystemManager : MonoBehaviour {
 
+	public BuildController BuildStats;
+	public ResorceManager resourceStats;
 	public bool InShip;
 
 	[Header("TIMESCALE 60 is default for a minute per hour")]
@@ -49,6 +51,9 @@ public class SystemManager : MonoBehaviour {
 
 	void Start () 
 	{
+		BuildStats = GameObject.Find("MainCamera").GetComponent<BuildController>();
+		resourceStats = GameObject.Find("Manager").GetComponent<ResorceManager>();
+
 		//SET THE CALANDER
 		day = 1;
 		Season = 1;
@@ -105,6 +110,7 @@ public class SystemManager : MonoBehaviour {
 			CalculateWeather();
 			CalculateTemp();
 			Calculatemoisture();
+			SolarPanelCheck();
 		}
 		else if (hour >= 24)
 		{
@@ -315,6 +321,14 @@ public class SystemManager : MonoBehaviour {
 		if(Season == 4)//Winter
 		{
 			moisture = Random.Range(WinterMoistRangeMin, WinterMoistRangeMax);
+		}
+	}
+
+	void SolarPanelCheck()
+	{
+		if(BuildStats.SolarFarmBuilt == true)
+		{
+			resourceStats.Battery += 10;
 		}
 	}
 }

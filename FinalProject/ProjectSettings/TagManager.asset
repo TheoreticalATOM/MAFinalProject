@@ -9,6 +9,8 @@ TagManager:
   - TerraformSphere
   - BuildableSpace
   - TreeCheck
+  - CarbonResorceUsed
+  - CarbonResourceAvilable
   layers:
   - Default
   - TransparentFX
