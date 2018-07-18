@@ -60,20 +60,20 @@ public class Terraform : MonoBehaviour
 
 		if (sphereLevel == 3)
 		{
-			if(resourceStats.CarbonStat >= 80 && resourceStats.PowerSpare >= 100)
+			if(resourceStats.CarbonStat >= 60 && resourceStats.PowerSpare >= 80)
 			{
-				resourceStats.CarbonStat -= 80;
-				resourceStats.PowerUsed += 100;
+				resourceStats.CarbonStat -= 60;
+				resourceStats.PowerUsed += 80;
 				StartCoroutine("ScaleSphere4");				
 			}
 		}
 
 		if (sphereLevel == 4)
 		{
-			if(resourceStats.CarbonStat >= 100 && resourceStats.PowerSpare >= 120)
+			if(resourceStats.CarbonStat >= 80 && resourceStats.PowerSpare >= 100)
 			{
-				resourceStats.CarbonStat -= 100;
-				resourceStats.PowerUsed += 120;
+				resourceStats.CarbonStat -= 80;
+				resourceStats.PowerUsed += 100;
 				StartCoroutine("ScaleSphere5");				
 			}
 		}

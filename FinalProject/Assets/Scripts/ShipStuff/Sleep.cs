@@ -9,6 +9,7 @@ public class Sleep : MonoBehaviour {
 	public GameObject shipPanel;
 	public int skipSpeed;
 	public bool isSkipping;
+	public bool open = false;
 
 	void Start () 
 	{
@@ -20,7 +21,15 @@ public class Sleep : MonoBehaviour {
 	{
 		if(Input.GetKeyDown("t"))
 		{
+			open = !open;
+		}
+		if(open) //Open Panel
+		{
 			shipPanel.SetActive(true);
+		}
+		if(!open) //Close Panel
+		{
+			shipPanel.SetActive(false);
 		}
 	}
 

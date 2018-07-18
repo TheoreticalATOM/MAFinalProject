@@ -70,8 +70,8 @@ public class DomeControler : MonoBehaviour {
 		if(TerraformStats.sphereLevel == 5)
 		{
 			currentDomeSizeText.text = "Dome Size 50";
-			carboncostToUpgradeText.text = "Carbon = 100";
-			PowerCostToUpgrageText.text = "Power Usage = 120";
+			carboncostToUpgradeText.text = "";
+			PowerCostToUpgrageText.text = "";
 		}
 
 

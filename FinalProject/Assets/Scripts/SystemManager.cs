@@ -111,6 +111,7 @@ public class SystemManager : MonoBehaviour {
 			CalculateTemp();
 			Calculatemoisture();
 			SolarPanelCheck();
+			TurbineCheck();
 		}
 		else if (hour >= 24)
 		{
@@ -329,6 +330,14 @@ public class SystemManager : MonoBehaviour {
 		if(BuildStats.SolarFarmBuilt == true)
 		{
 			resourceStats.Battery += 10;
+		}
+	}
+
+	void TurbineCheck()
+	{
+		if(BuildStats.TurbineBuilt == true)
+		{
+			resourceStats.BatteryWind += 10;
 		}
 	}
 }

@@ -21,6 +21,10 @@ public float ShipWater;
 public float PowerSpare;
 public float PowerUsed;
 public float Battery;
+public float BatteryWind;
+public float CheatBat;
+public float WaterTank;
+public float CheatTank;
 
 	void Start () 
 	{
@@ -42,13 +46,17 @@ public float Battery;
 		WaterStatText.text = "" + WaterStat;
 
 		//CarbonStat = StartingCarbon;
-		PowerStat = ShipPower + Battery;
-		WaterStat = ShipWater;
+		PowerStat = ShipPower + Battery + BatteryWind + CheatBat;
+		WaterStat = ShipWater + WaterTank + CheatTank;
 		PowerSpare = PowerStat - PowerUsed;
 
 		if(Battery >= 100)
 		{
 			Battery = 100;
+		}
+		if(BatteryWind >= 100)
+		{
+			BatteryWind = 100;
 		}
 	}
 }

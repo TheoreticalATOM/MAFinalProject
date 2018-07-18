@@ -11,22 +11,27 @@ public GameObject DockPanelStuff;
 public GameObject WaterTankPanelStuff;
 public GameObject RadioTowerPanelStuff;
 public GameObject SolarFarmPanelStuff;
+public GameObject TurbinePanelStuff;
 public GameObject BuildSpotDock;
 public GameObject BuildSpotTank;
 public GameObject BuildSpotTower;
 public GameObject BuildSpotSolar;
+public GameObject BuildSpotTurbine;
 public GameObject FishingDockMod;
 public GameObject WaterTankMod;
 public GameObject RadioTowerMod;
 public GameObject SolarFarmMod;
+public GameObject TurbineMod;
 public bool DockActive;
 public bool TankActive;
 public bool TowerActive;
 public bool SolarFarmActive;
+public bool TurbineActive;
 public bool DockBuilt;
 public bool TankBuilt;
 public bool TowerBuilt;
 public bool SolarFarmBuilt;
+public bool TurbineBuilt;
 
 
 	void Start () 
@@ -37,18 +42,22 @@ public bool SolarFarmBuilt;
 		WaterTankPanelStuff.SetActive(false);
 		RadioTowerPanelStuff.SetActive(false);
 		SolarFarmPanelStuff.SetActive(false);
+		TurbinePanelStuff.SetActive(false);
 		DockActive = false;
 		TankActive = false;
 		TowerActive = false;
 		SolarFarmActive = false;
+		TowerActive = false;
 		BuildSpotDock.SetActive(true);
 		BuildSpotTank.SetActive(true);
 		BuildSpotTower.SetActive(true);
 		BuildSpotSolar.SetActive(true);
 		FishingDockMod.SetActive(false);
+		TurbineMod.SetActive(false);
 		WaterTankMod.SetActive(false);
 		RadioTowerMod.SetActive(false);
 		SolarFarmMod.SetActive(false);
+		TurbineMod.SetActive(false);
 	}
 	
 
@@ -68,10 +77,12 @@ public bool SolarFarmBuilt;
 						WaterTankPanelStuff.SetActive(false);
 						RadioTowerPanelStuff.SetActive(false);
 						SolarFarmPanelStuff.SetActive(false);
+						TurbinePanelStuff.SetActive(false);
 						DockActive = true;
 						TankActive = false;
 						TowerActive = false;
 						SolarFarmActive = false;
+						TurbineActive = false;
 					}
 					if (hit.transform.name == "BuildSpot_WaterTank" )
 					{
@@ -80,10 +91,12 @@ public bool SolarFarmBuilt;
 						WaterTankPanelStuff.SetActive(true);
 						RadioTowerPanelStuff.SetActive(false);
 						SolarFarmPanelStuff.SetActive(false);
+						TurbinePanelStuff.SetActive(false);
 						DockActive = false;
 						TankActive = true;
 						TowerActive = false;
 						SolarFarmActive = false;
+						TurbineActive = false;
 
 					}
 					if (hit.transform.name == "BuildSpot_RadioTower" )
@@ -93,10 +106,12 @@ public bool SolarFarmBuilt;
 						WaterTankPanelStuff.SetActive(false);
 						RadioTowerPanelStuff.SetActive(true);
 						SolarFarmPanelStuff.SetActive(false);
+						TurbinePanelStuff.SetActive(false);
 						DockActive = false;
 						TankActive = false;
 						TowerActive = true;
 						SolarFarmActive = false;
+						TurbineActive = false;
 					}
 					if (hit.transform.name == "BuildSpot_SolarFarm" )
 					{
@@ -105,29 +120,29 @@ public bool SolarFarmBuilt;
 						WaterTankPanelStuff.SetActive(false);
 						RadioTowerPanelStuff.SetActive(false);
 						SolarFarmPanelStuff.SetActive(true);
+						TurbinePanelStuff.SetActive(false);
 						DockActive = false;
 						TankActive = false;
 						TowerActive = false;
 						SolarFarmActive = true;
+						TurbineActive = false;
+					}
+					if (hit.transform.name == "BuildSpot_WindTurbine" )
+					{
+ 						BuildPanel.SetActive(true);
+						DockPanelStuff.SetActive(false);
+						WaterTankPanelStuff.SetActive(false);
+						RadioTowerPanelStuff.SetActive(false);
+						SolarFarmPanelStuff.SetActive(false);
+						TurbinePanelStuff.SetActive(true);
+						DockActive = false;
+						TankActive = false;
+						TowerActive = false;
+						SolarFarmActive = false;
+						TurbineActive = true;
 					}
 				}
 			}
-		
-		if(DockBuilt == true)
-		{
-			//Nothing Yet
-		}
-
-		if(TankBuilt == true)
-		{
-			//TODO: Make this go Up OverTime to a set amount then stop. untill used then go up again.
-			resourceStats.WaterStat += 40;
-		}
-			
-		if(TowerBuilt == true)
-		{
-			//Nothing Yet
-		}
 
 	}
 
@@ -137,9 +152,13 @@ public bool SolarFarmBuilt;
 		DockPanelStuff.SetActive(false);
 		WaterTankPanelStuff.SetActive(false);
 		RadioTowerPanelStuff.SetActive(false);
+		SolarFarmPanelStuff.SetActive(false);
+		TurbinePanelStuff.SetActive(false);
 		DockActive = false;
 		TankActive = false;
 		TowerActive = false;
+		SolarFarmActive = false;
+		TurbineActive = false;
 	}
 
 	public void Build()
@@ -193,6 +212,19 @@ public bool SolarFarmBuilt;
 				BuildPanel.SetActive(false);
 				BuildSpotSolar.SetActive(false);
 				SolarFarmBuilt = true;
+			}
+		}
+
+		if(TurbineActive == true)
+		{
+			if(resourceStats.CarbonStat >= 30 && resourceStats.PowerSpare >= 0)
+			{
+				resourceStats.CarbonStat -= 30;
+				//resourceStats.PowerUsed += 5;
+				TurbineMod.SetActive(true);
+				BuildPanel.SetActive(false);
+				BuildSpotTurbine.SetActive(false);
+				TurbineBuilt = true;
 			}
 		}
 	}
