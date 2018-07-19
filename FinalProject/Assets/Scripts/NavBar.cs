@@ -106,6 +106,7 @@ public class NavBar : MonoBehaviour {
 
 	public void OpenHelp()
 	{
+		GameGrind.Journal.Increment("Help will always be given to those who ask for it.",1);
 		HelpOpen = !HelpOpen;
 		SettingPanel.SetActive(false);
 		mapPanel.SetActive(false);

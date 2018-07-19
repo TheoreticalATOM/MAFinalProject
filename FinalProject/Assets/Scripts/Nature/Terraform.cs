@@ -92,6 +92,11 @@ public class Terraform : MonoBehaviour
 	transform.localScale = FinalScale1;
 	sphereLevel += 1;
 	UpgradeButton.SetActive(true);
+	GameGrind.Journal.Increment("Dome Level 1", 1);
+	GameGrind.Journal.Increment("Dome Level 2", 1);
+	GameGrind.Journal.Increment("Dome Level 3", 1);
+	GameGrind.Journal.Increment("Dome Level 4", 1);
+	GameGrind.Journal.Increment("Dome Level 5", 1);
 	}
 
 
@@ -108,6 +113,10 @@ public class Terraform : MonoBehaviour
 	transform.localScale = FinalScale2;
 	sphereLevel += 1;
 	UpgradeButton.SetActive(true);
+	GameGrind.Journal.Increment("Dome Level 2", 1);
+	GameGrind.Journal.Increment("Dome Level 3", 1);
+	GameGrind.Journal.Increment("Dome Level 4", 1);
+	GameGrind.Journal.Increment("Dome Level 5", 1);
 	}
 
 
@@ -124,6 +133,9 @@ public class Terraform : MonoBehaviour
 	transform.localScale = FinalScale3;
 	sphereLevel += 1;
 	UpgradeButton.SetActive(true);
+	GameGrind.Journal.Increment("Dome Level 3", 1);
+	GameGrind.Journal.Increment("Dome Level 4", 1);
+	GameGrind.Journal.Increment("Dome Level 5", 1);
 	}
 
 
@@ -140,6 +152,8 @@ public class Terraform : MonoBehaviour
 	transform.localScale = FinalScale4;
 	sphereLevel += 1;
 	UpgradeButton.SetActive(true);
+	GameGrind.Journal.Increment("Dome Level 4", 1);
+	GameGrind.Journal.Increment("Dome Level 5", 1);
 	}
 
 
@@ -156,6 +170,7 @@ public class Terraform : MonoBehaviour
 	transform.localScale = FinalScale5;
 	sphereLevel += 1;
 	FullyUpgraded.SetActive(true);
+	GameGrind.Journal.Increment("Dome Level 5", 1);
 	}
 
 

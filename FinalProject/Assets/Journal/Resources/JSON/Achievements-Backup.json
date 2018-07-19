@@ -1,0 +1,94 @@
+{
+    "AchievementList": [
+        {
+            "id": 0,
+            "title": "Dome Level 1",
+            "icon": {
+                "instanceID": 4254
+            },
+            "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
+            "description": "Upgrade Your Terraforming Dome to Level 1",
+            "value": 0,
+            "neededValue": 1,
+            "displayAsPercentage": false,
+            "points": 10,
+            "completed": false,
+            "secret": false
+        },
+        {
+            "id": 1,
+            "title": "Dome Level 2",
+            "icon": {
+                "instanceID": 4254
+            },
+            "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
+            "description": "Upgrade Your Terraforming Dome to Level 2",
+            "value": 0,
+            "neededValue": 2,
+            "displayAsPercentage": false,
+            "points": 10,
+            "completed": false,
+            "secret": false
+        },
+        {
+            "id": 2,
+            "title": "Dome Level 3",
+            "icon": {
+                "instanceID": 4254
+            },
+            "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
+            "description": "Upgrade Your Terraforming Dome to Level 3",
+            "value": 0,
+            "neededValue": 3,
+            "displayAsPercentage": false,
+            "points": 10,
+            "completed": false,
+            "secret": false
+        },
+        {
+            "id": 3,
+            "title": "Dome Level 4",
+            "icon": {
+                "instanceID": 4254
+            },
+            "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
+            "description": "Upgrade Your Terraforming Dome to Level 4",
+            "value": 0,
+            "neededValue": 4,
+            "displayAsPercentage": false,
+            "points": 10,
+            "completed": false,
+            "secret": false
+        },
+        {
+            "id": 4,
+            "title": "Dome Level 5",
+            "icon": {
+                "instanceID": 4254
+            },
+            "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
+            "description": "Upgrade Your Terraforming Dome to Level 5",
+            "value": 0,
+            "neededValue": 5,
+            "displayAsPercentage": false,
+            "points": 10,
+            "completed": false,
+            "secret": false
+        },
+        {
+            "id": 5,
+            "title": "Help will always be given to those who ask for it.",
+            "icon": {
+                "instanceID": 4254
+            },
+            "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
+            "description": "Use the in game help",
+            "value": 0,
+            "neededValue": 1,
+            "displayAsPercentage": false,
+            "points": 1,
+            "completed": false,
+            "secret": false
+        }
+    ]
+}
