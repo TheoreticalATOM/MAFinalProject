@@ -132,6 +132,4 @@ public class NavBar : MonoBehaviour {
 	{
         Application.Quit();
 	}
-
-
 }
