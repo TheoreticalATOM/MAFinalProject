@@ -32,17 +32,17 @@ public class DevWindow : MonoBehaviour {
 
 	public void CheatCarbon()
 	{
-		resourceStats.CarbonStat += 10;
+		resourceStats.CarbonStat += 100;
 	}
 
 	public void CheatPower()
 	{
-		resourceStats.CheatBat += 10;
+		resourceStats.CheatBat += 100;
 	}
 
 	public void CheatWater()
 	{
-		resourceStats.CheatTank += 10;
+		resourceStats.CheatTank += 100;
 	}
 
 }

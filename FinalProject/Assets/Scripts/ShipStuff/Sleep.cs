@@ -6,31 +6,12 @@ using TMPro;
 
 public class Sleep : MonoBehaviour {
 	private SystemManager SystemStats;
-	public GameObject shipPanel;
 	public int skipSpeed;
 	public bool isSkipping;
-	public bool open = false;
 
 	void Start () 
 	{
 	SystemStats = GameObject.Find("Manager").GetComponent<SystemManager>();	
-	shipPanel.SetActive(false);
-	}
-
-	public void Update()
-	{
-		if(Input.GetKeyDown("t"))
-		{
-			open = !open;
-		}
-		if(open) //Open Panel
-		{
-			shipPanel.SetActive(true);
-		}
-		if(!open) //Close Panel
-		{
-			shipPanel.SetActive(false);
-		}
 	}
 
 	public void SleepToMorning ()
@@ -91,11 +72,6 @@ public class Sleep : MonoBehaviour {
 			Time.timeScale = 1;
 			}
 		}
-	}
-
-	public void Close()
-	{
-		shipPanel.SetActive(false);
 	}
 
 }

@@ -32,7 +32,7 @@ public class Terraform : MonoBehaviour
 	{
 		if (sphereLevel == 0)
 		{
-			if(resourceStats.CarbonStat >= 0 && resourceStats.PowerSpare >= 0)
+			if(resourceStats.CarbonStat >= 0 && resourceStats.PowerSpare >= 0 && resourceStats.WaterStat >= 0)
 			{
 				StartCoroutine("ScaleSphere1");
 			}
@@ -40,40 +40,44 @@ public class Terraform : MonoBehaviour
 
 		if (sphereLevel == 1)
 		{
-			if(resourceStats.CarbonStat >= 25 && resourceStats.PowerSpare >= 30)
+			if(resourceStats.CarbonStat >= 25 && resourceStats.PowerSpare >= 30 && resourceStats.WaterStat >= 50)
 			{
 				resourceStats.CarbonStat -= 25;
 				resourceStats.PowerUsed += 30;
+				resourceStats.WaterStat -= 50;
 				StartCoroutine("ScaleSphere2");				
 			}
 		}
 
 		if (sphereLevel == 2)
 		{
-			if(resourceStats.CarbonStat >= 40 && resourceStats.PowerSpare >= 60)
+			if(resourceStats.CarbonStat >= 40 && resourceStats.PowerSpare >= 60 && resourceStats.WaterStat >= 80)
 			{
 				resourceStats.CarbonStat -= 40;
 				resourceStats.PowerUsed += 60;
+				resourceStats.WaterStat -= 80;
 				StartCoroutine("ScaleSphere3");				
 			}
 		}
 
 		if (sphereLevel == 3)
 		{
-			if(resourceStats.CarbonStat >= 60 && resourceStats.PowerSpare >= 80)
+			if(resourceStats.CarbonStat >= 60 && resourceStats.PowerSpare >= 80 && resourceStats.WaterStat >= 110)
 			{
 				resourceStats.CarbonStat -= 60;
 				resourceStats.PowerUsed += 80;
+				resourceStats.WaterStat -= 110;
 				StartCoroutine("ScaleSphere4");				
 			}
 		}
 
 		if (sphereLevel == 4)
 		{
-			if(resourceStats.CarbonStat >= 80 && resourceStats.PowerSpare >= 100)
+			if(resourceStats.CarbonStat >= 80 && resourceStats.PowerSpare >= 100 && resourceStats.WaterStat >= 150)
 			{
 				resourceStats.CarbonStat -= 80;
 				resourceStats.PowerUsed += 100;
+				resourceStats.WaterStat -= 150;
 				StartCoroutine("ScaleSphere5");				
 			}
 		}

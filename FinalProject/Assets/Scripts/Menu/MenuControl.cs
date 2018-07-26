@@ -9,6 +9,8 @@ public class MenuControl : MonoBehaviour {
 	public GameObject OptionsPanel;
 	public GameObject CreditPanel;
 
+	public bool optionsOpen = false;
+	public bool CreditsOpen = false;
 
 	void Start () 
 	{
@@ -34,19 +36,68 @@ public class MenuControl : MonoBehaviour {
 
 	public void Options()
 	{
-		OptionsPanel.SetActive(true);
-		CreditPanel.SetActive(false);
+		optionsOpen = !optionsOpen;
+
+		if(optionsOpen) //Open Panel
+		{
+			OptionsPanel.SetActive(true);
+			CreditPanel.SetActive(false);
+			CreditsOpen = false;
+		}
+		if(!optionsOpen) //Close Panel
+		{
+			OptionsPanel.SetActive(false);
+		}
 	}
 
 	public void Credits()
 	{
-		OptionsPanel.SetActive(false);
-		CreditPanel.SetActive(true);
+		CreditsOpen = !CreditsOpen;
+
+		if(CreditsOpen) //Open Panel
+		{
+			CreditPanel.SetActive(true);
+			OptionsPanel.SetActive(false);
+			optionsOpen = false;
+		}
+		if(!CreditsOpen) //Close Panel
+		{
+			CreditPanel.SetActive(false);
+		}
 	}
 
 	public void Quit()
 	{
         Application.Quit();
+	}
+
+
+	public void CloseCredits()
+	{
+		CreditsOpen = !CreditsOpen;
+
+		if(CreditsOpen) //Open Panel
+		{
+			CreditPanel.SetActive(true);
+		}
+		if(!CreditsOpen) //Close Panel
+		{
+			CreditPanel.SetActive(false);
+		}
+	}
+
+		public void CloseOptions()
+	{
+		optionsOpen = !optionsOpen;
+
+		if(optionsOpen) //Open Panel
+		{
+			OptionsPanel.SetActive(true);
+		}
+		if(!optionsOpen) //Close Panel
+		{
+			OptionsPanel.SetActive(false);
+		}
 	}
 
 }

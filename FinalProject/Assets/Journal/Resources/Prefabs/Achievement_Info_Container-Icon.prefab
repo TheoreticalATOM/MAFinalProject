@@ -271,8 +271,8 @@ MonoBehaviour:
   valueBackground: {fileID: 11432964}
   sliderBackground: {fileID: 11467450}
   iconImage: {fileID: 114250714969585350}
-  progressBarCompleteColor: {r: 0, g: 1, b: 0.37931037, a: 1}
-  valueBackgroundColor: {r: 0.0627451, g: 0.08235294, b: 0.10980392, a: 0.65882355}
+  progressBarCompleteColor: {r: 0.38652548, g: 0.8113208, b: 0.54811424, a: 1}
+  valueBackgroundColor: {r: 0.6839622, g: 0.8156447, b: 1, a: 0.65882355}
   altRowShading: {r: 0.105882354, g: 0.14117648, b: 0.19215687, a: 1}
   progressBarSecretiveColor: {r: 0.0627451, g: 0.08235294, b: 0.10980393, a: 0}
   secretValueBGColor: {r: 0, g: 0, b: 0, a: 0}
@@ -350,15 +350,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.07450981, g: 0.10196079, b: 0.13333334, a: 1}
+  m_Color: {r: 0.2790139, g: 0.31433687, b: 0.3584906, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300008, guid: f8eeb592d88f0334f88f33f7d34703f0, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 0e7f7c3e36b5c6d469fe0017f4d96346, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -416,6 +416,7 @@ MonoBehaviour:
   m_PreferredHeight: 120
   m_FlexibleWidth: 1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &11466378
 MonoBehaviour:
   m_ObjectHideFlags: 1
