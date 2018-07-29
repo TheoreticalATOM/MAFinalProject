@@ -30,6 +30,9 @@ public class Sleep : MonoBehaviour {
 	public void StopSleep()
 	{
 		isSkipping = false;
+		SystemStats.SkipIcon.SetActive(false);
+		SystemStats.PlayIcon.SetActive(true);	
+		SystemStats.PauseIcon.SetActive(false);	
 	}
 
 	IEnumerator SkipTime()
