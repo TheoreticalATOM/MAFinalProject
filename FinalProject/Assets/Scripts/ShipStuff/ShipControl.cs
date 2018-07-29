@@ -6,12 +6,14 @@ public class ShipControl : MonoBehaviour {
 
 	public GameObject TerraformPanel;
 	public GameObject ShipPanel;
+	public GameObject weatherpanel;
 
 
 	void Start () 
 	{
 		ShipPanel.SetActive(false);
 		TerraformPanel.SetActive(false);
+		weatherpanel.SetActive(false);
 	}
 	
 
@@ -41,6 +43,14 @@ public class ShipControl : MonoBehaviour {
 
 	public void closeTerraformDome()
 	{
+		TerraformPanel.SetActive(false);
+		ShipPanel.SetActive(false);
+		weatherpanel.SetActive(false);
+	}
+
+	public void openWeatherPanel()
+	{
+		weatherpanel.SetActive(true);
 		TerraformPanel.SetActive(false);
 		ShipPanel.SetActive(false);
 	}

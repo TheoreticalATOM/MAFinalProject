@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class IntroCutscene : MonoBehaviour {
 
@@ -14,8 +15,15 @@ public class IntroCutscene : MonoBehaviour {
 	public Vector3 EndPositionCam;
 	public float TimeScale;
 	public float TimeScaleCam;
+	public float TimeScaleText;
 	public bool Landed;
 	public bool LandedCam;
+	public bool TextDone;
+
+	public GameObject Line1;
+	public GameObject Line2;
+	public GameObject Line3;
+	public GameObject Line4;
 
 
 	void Start () 
@@ -23,6 +31,11 @@ public class IntroCutscene : MonoBehaviour {
 		Landed = false;
 	StartCoroutine("StartCutscene");
 	StartCoroutine("CameraMove");
+	StartCoroutine("TextScroll");
+	Line1.SetActive(false);
+	Line2.SetActive(false);
+	Line3.SetActive(false);
+	Line4.SetActive(false);
 	}
 	
 
@@ -33,7 +46,7 @@ public class IntroCutscene : MonoBehaviour {
 			SceneManager.LoadScene(2);
 		}
 
-		if (Landed == true && LandedCam == true)
+		if (Landed == true && LandedCam == true && TextDone == true)
 		{
 			SceneManager.LoadScene(2);
 		}
@@ -63,6 +76,42 @@ public class IntroCutscene : MonoBehaviour {
 		yield return null;
 	}
 		LandedCam = true;
+	}
+ 
+	IEnumerator TextScroll()
+	{
+		float ProgressT = 0;
+		while (ProgressT <= 1)
+		{	
+			ProgressT += Time.deltaTime * TimeScaleText;
+			yield return new WaitForSeconds(2.0f);
+			Line1.SetActive(true);
+			Line2.SetActive(false);
+			Line3.SetActive(false);
+			Line4.SetActive(false);
+            yield return new WaitForSeconds(2.0f);
+			Line1.SetActive(true);
+			Line2.SetActive(true);
+			Line3.SetActive(false);
+			Line4.SetActive(false);
+            yield return new WaitForSeconds(2.0f);
+			Line1.SetActive(true);
+			Line2.SetActive(true);
+			Line3.SetActive(true);
+			Line4.SetActive(false);
+            yield return new WaitForSeconds(2.0f);
+			Line1.SetActive(true);
+			Line2.SetActive(true);
+			Line3.SetActive(true);
+			Line4.SetActive(true);
+            yield return new WaitForSeconds(2.0f);
+			Line1.SetActive(false);
+			Line2.SetActive(false);
+			Line3.SetActive(false);
+			Line4.SetActive(false);
+			TextDone = true;
+			yield return null;
+		}
 	}
 
 }

@@ -13,6 +13,8 @@ public class NavBar : MonoBehaviour {
 	public bool SettingOpen = false;
 	public bool HelpOpen = false;
 	private bool paused = false;
+	private Sleep SleepRef;
+    private SystemManager SystemStats;
 
 
 	void Start () 
@@ -21,6 +23,9 @@ public class NavBar : MonoBehaviour {
 		SettingPanel.SetActive(false);
 		HelpPanel.SetActive(false);
 		PauseMenu.SetActive(false);
+        SleepRef = GameObject.Find("SpaceStation").GetComponent<Sleep>();	
+        SystemStats = GameObject.Find("Manager").GetComponent<SystemManager>();	
+
 	}
 	
 
@@ -44,12 +49,19 @@ public class NavBar : MonoBehaviour {
                 Debug.Log("GamePaused");
                 PauseMenu.SetActive(true);
                 Time.timeScale = 0;
+                SleepRef.isSkipping = false;
+		        SystemStats.SkipIcon.SetActive(false);
+		        SystemStats.PlayIcon.SetActive(false);	
+		        SystemStats.PauseIcon.SetActive(true);	
             }
             if (!paused)
             {
                 Debug.Log("GameUNPaused");
                 PauseMenu.SetActive(false);
                 Time.timeScale = 1;
+		        SystemStats.SkipIcon.SetActive(false);
+		        SystemStats.PlayIcon.SetActive(true);	
+		        SystemStats.PauseIcon.SetActive(false);
             }
 	}
 

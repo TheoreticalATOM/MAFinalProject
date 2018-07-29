@@ -14,63 +14,35 @@ public class Sleep : MonoBehaviour {
 	SystemStats = GameObject.Find("Manager").GetComponent<SystemManager>();	
 	}
 
-	public void SleepToMorning ()
+	void Update()
 	{
-		isSkipping = true;
-
-		if (isSkipping == true)
+		if (isSkipping == false)
 		{
-        Time.timeScale = skipSpeed; //NOTE: how quickly we skip to day.
-			if(SystemStats.hour == 7) //NOTE: Time to skip too.
-			{
-			isSkipping =false;
 			Time.timeScale = 1;
-			}
 		}
 	}
-
-	public void SleepToMidnight()
+	public void SleepToTime ()
 	{
 		isSkipping = true;
-
-		if (isSkipping == true)
-		{
-        Time.timeScale = skipSpeed; 
-			if(SystemStats.hour == 0)
-			{
-			isSkipping =false;
-			Time.timeScale = 1;
-			}
-		}
+		StartCoroutine("SkipTime");
 	}
 
-	public void SleepToMidDay()
+	public void StopSleep()
 	{
-		isSkipping = true;
-
-		if (isSkipping == true)
-		{
-        Time.timeScale = skipSpeed; 
-			if(SystemStats.hour == 12)
-			{
-			isSkipping =false;
-			Time.timeScale = 1;
-			}
-		}
+		isSkipping = false;
 	}
 
-		public void SleepToNight()
+	IEnumerator SkipTime()
 	{
-		isSkipping = true;
+		SystemStats.SkipIcon.SetActive(true);
+		SystemStats.PlayIcon.SetActive(false);	
+		SystemStats.PauseIcon.SetActive(false);	
 
-		if (isSkipping == true)
-		{
-        Time.timeScale = skipSpeed; 
-			if(SystemStats.hour == 19)
-			{
-			isSkipping =false;
-			Time.timeScale = 1;
-			}
+		while (isSkipping == true)
+		{			
+       		 Time.timeScale = skipSpeed; //NOTE: how quickly we skip to day.
+			//if(SystemStats.hour == 7) //NOTE: Time to skip too.
+			yield return null;
 		}
 	}
 

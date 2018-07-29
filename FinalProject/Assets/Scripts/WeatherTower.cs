@@ -20,5 +20,6 @@ public class WeatherTower : MonoBehaviour {
 	{
 		temperature.text = "Temperature: " + SystemStats.temperature.ToString();
 		moisture.text = "Moisture: " + SystemStats.moisture.ToString();
+		weather.text = "Weather: " + SystemStats.currentWeather;
 	}
 }

@@ -19,6 +19,9 @@ public class SystemManager : MonoBehaviour {
 	public TextMeshProUGUI dateText;
 	public TextMeshProUGUI seasonText;
 	public TextMeshProUGUI timeText;
+	 public GameObject PlayIcon;
+    public GameObject PauseIcon;
+    public GameObject SkipIcon;
 	public double second, minute, hour, day, Season, year;
 
 	[Header("Weather")]
@@ -49,6 +52,8 @@ public class SystemManager : MonoBehaviour {
 	public float WinterMoistRangeMin;
 	public float WinterMoistRangeMax; 
 
+	public string currentWeather;
+
 	void Start () 
 	{
 		BuildStats = GameObject.Find("MainCamera").GetComponent<BuildController>();
@@ -63,6 +68,9 @@ public class SystemManager : MonoBehaviour {
 		CalculateWeather();
 		CalculateTemp();
 		Calculatemoisture();
+		PlayIcon.SetActive(true);
+		PauseIcon.SetActive(false);
+		SkipIcon.SetActive(false);
 	}
 	
 	void Update () 
@@ -246,6 +254,7 @@ public class SystemManager : MonoBehaviour {
 		snowing = false;
 		thunder = false;
 		cold = false;
+		currentWeather = "Sunny";
 		}
 
 		else if (temperature >= 50 && moisture >= 50) // Make it Thunder
@@ -255,6 +264,7 @@ public class SystemManager : MonoBehaviour {
 		snowing = false;
 		thunder = true;
 		cold = false;
+		currentWeather = "Thunder";
 		}
 
 		else if (temperature <= 0 && moisture >= 50) // Make it Snow
@@ -264,6 +274,7 @@ public class SystemManager : MonoBehaviour {
 		snowing = true;
 		thunder = false;
 		cold = true;
+		currentWeather = "Snow";
 		}
 
 		else if (temperature >= 1 && temperature <= 49 && moisture >= 50) // Make it Rain , Not Cold Not Sunny 
@@ -273,6 +284,7 @@ public class SystemManager : MonoBehaviour {
 		snowing = false;
 		thunder = false;
 		cold = false;
+		currentWeather = "Rain";
 		}
 
 		else if (temperature <=0 && moisture <= 49) // Cold No Snow
@@ -282,6 +294,7 @@ public class SystemManager : MonoBehaviour {
 		snowing = false;
 		thunder = false;
 		cold = true;
+		currentWeather = "Cold";
 		}
 
 	}

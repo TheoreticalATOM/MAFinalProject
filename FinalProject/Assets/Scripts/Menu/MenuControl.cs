@@ -100,4 +100,9 @@ public class MenuControl : MonoBehaviour {
 		}
 	}
 
+	public void Twitter()
+	{
+		Application.OpenURL("https://twitter.com/TheoreticalATOM");
+	}
+
 }
