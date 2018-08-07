@@ -44,7 +44,6 @@ public class Sleep : MonoBehaviour {
 		while (isSkipping == true)
 		{			
        		 Time.timeScale = skipSpeed; //NOTE: how quickly we skip to day.
-			//if(SystemStats.hour == 7) //NOTE: Time to skip too.
 			yield return null;
 		}
 	}

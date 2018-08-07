@@ -4,7 +4,7 @@
             "id": 0,
             "title": "Dome Level 1",
             "icon": {
-                "instanceID": 4248
+                "instanceID": 4262
             },
             "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
             "description": "Upgrade Your Terraforming Dome to Level 1",
@@ -19,7 +19,7 @@
             "id": 1,
             "title": "Dome Level 2",
             "icon": {
-                "instanceID": 4248
+                "instanceID": 4262
             },
             "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
             "description": "Upgrade Your Terraforming Dome to Level 2",
@@ -34,7 +34,7 @@
             "id": 2,
             "title": "Dome Level 3",
             "icon": {
-                "instanceID": 4248
+                "instanceID": 4262
             },
             "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
             "description": "Upgrade Your Terraforming Dome to Level 3",
@@ -49,7 +49,7 @@
             "id": 3,
             "title": "Dome Level 4",
             "icon": {
-                "instanceID": 4248
+                "instanceID": 4262
             },
             "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
             "description": "Upgrade Your Terraforming Dome to Level 4",
@@ -64,7 +64,7 @@
             "id": 4,
             "title": "Dome Level 5",
             "icon": {
-                "instanceID": 4248
+                "instanceID": 4262
             },
             "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
             "description": "Upgrade Your Terraforming Dome to Level 5",
@@ -77,9 +77,84 @@
         },
         {
             "id": 5,
+            "title": "Dome Level 6",
+            "icon": {
+                "instanceID": 4262
+            },
+            "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
+            "description": "Upgrade Your Terraforming Dome to Level 6",
+            "value": 0,
+            "neededValue": 6,
+            "displayAsPercentage": false,
+            "points": 10,
+            "completed": false,
+            "secret": false
+        },
+        {
+            "id": 6,
+            "title": "Dome Level 7",
+            "icon": {
+                "instanceID": 4262
+            },
+            "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
+            "description": "Upgrade Your Terraforming Dome to Level 7",
+            "value": 0,
+            "neededValue": 7,
+            "displayAsPercentage": false,
+            "points": 10,
+            "completed": false,
+            "secret": false
+        },
+        {
+            "id": 7,
+            "title": "Dome Level 8",
+            "icon": {
+                "instanceID": 4262
+            },
+            "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
+            "description": "Upgrade Your Terraforming Dome to Level 8",
+            "value": 0,
+            "neededValue": 8,
+            "displayAsPercentage": false,
+            "points": 10,
+            "completed": false,
+            "secret": false
+        },
+        {
+            "id": 8,
+            "title": "Dome Level 9",
+            "icon": {
+                "instanceID": 4262
+            },
+            "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
+            "description": "Upgrade Your Terraforming Dome to Level 9",
+            "value": 0,
+            "neededValue": 9,
+            "displayAsPercentage": false,
+            "points": 10,
+            "completed": false,
+            "secret": false
+        },
+        {
+            "id": 9,
+            "title": "Dome Level 10",
+            "icon": {
+                "instanceID": 4262
+            },
+            "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
+            "description": "Upgrade Your Terraforming Dome to Level 10",
+            "value": 0,
+            "neededValue": 10,
+            "displayAsPercentage": false,
+            "points": 10,
+            "completed": false,
+            "secret": false
+        },
+        {
+            "id": 10,
             "title": "Help will always be given to those who ask for it",
             "icon": {
-                "instanceID": 4248
+                "instanceID": 4262
             },
             "iconPath": "Assets/Journal/Resources/Sprites/Trophy_B.png",
             "description": "Use the in game help",

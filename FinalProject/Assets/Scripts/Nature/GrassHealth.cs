@@ -25,92 +25,64 @@ public class GrassHealth : MonoBehaviour
 		SystemStats = GameObject.Find("Manager").GetComponent<SystemManager>();
 		GrassMod = this.transform.GetChild(0).gameObject;
 		snowMod = this.transform.GetChild(1).gameObject;
-		watered = 30;
-		sunned = 30;
 	}
 	
 	void Update () 
 	{
-		grassLife = sunned + watered;
 
 		if (Terraformed == true)
 		{
 			grassLife = 100;
 			GrassAlive = true;
 			GrassMod.SetActive(true);
-			watered = 100;
-			sunned = 100;
 			if(SystemStats.snowing == true)
 			{
-				Snowy += SnowSpeed;
-			}
-			if(SystemStats.snowing == false)
-			{
-				Snowy -=SnowSpeed;
-			}
-		}
-/* 
-//NOTE: Old System that tracked all tiles all the time
-		if (Terraformed == false)
-		{
-			if (GrassAlive == true)
-			{
-			GrassMod.SetActive(true);
-			}
-
-			if (GrassAlive == false)
-			{
-			GrassMod.SetActive(false);
-			}
-
-			if (grassLife >= 100)
-			{
-			GrassAlive = true;
-			}
-
-			if (grassLife <100)
-			{
-			GrassAlive = false;
-			}
-
-			if (Snowy >=50)
-			{
 				snowMod.SetActive(true);
-			}
-			if (Snowy <50)
-			{
-				snowMod.SetActive(false);
-			}
-
-			if(SystemStats.raining == true)
-			{
-				watered += WaterSpeed;
-				if(Snowy > 0)
-				{
-					Snowy -= MeltSpeed;
-				}
-			}
-			if(SystemStats.raining == false) 
-			{
-				watered -= DrySpeed;
+				GrassMod.SetActive(false);
 			}
 			if(SystemStats.sunny == true)
 			{
-				sunned += SunSpeed;
-				if(Snowy > 0)
-				{
-					Snowy -= MeltSpeed;
-				}
+				snowMod.SetActive(false);
+				GrassMod.SetActive(true);
 			}
-			if(SystemStats.sunny == false)
+			if(SystemStats.raining == true)
 			{
-				sunned -= DrySpeed;
+				snowMod.SetActive(false);
+				GrassMod.SetActive(true);
 			}
+			if(SystemStats.thunder == true)
+			{
+				snowMod.SetActive(false);
+				GrassMod.SetActive(true);
+			}			
+		}
+
+		if (Terraformed == false)
+		{
 			if(SystemStats.snowing == true)
 			{
-				Snowy += SnowSpeed;
+				snowMod.SetActive(true);
+				//GrassMod.SetActive(false);
 			}
-		}*/
+			if(SystemStats.sunny == true)
+			{
+				snowMod.SetActive(false);
+			//	GrassMod.SetActive(true);
+			}
+			if(SystemStats.raining == true)
+			{
+				snowMod.SetActive(false);
+			//	GrassMod.SetActive(true);
+			}
+			if(SystemStats.thunder == true)
+			{
+				snowMod.SetActive(false);
+			//	GrassMod.SetActive(true);
+			}	
+		}
+
+
+
 	}
  
 	void OnTriggerEnter(Collider other)

@@ -7,6 +7,10 @@ public class ShipControl : MonoBehaviour {
 	public GameObject TerraformPanel;
 	public GameObject ShipPanel;
 	public GameObject weatherpanel;
+	public GameObject NextPageBtn;
+	public GameObject domeInfo1;
+	public GameObject domeInfo2;
+	public GameObject lastPageBtn;
 
 
 	void Start () 
@@ -14,9 +18,12 @@ public class ShipControl : MonoBehaviour {
 		ShipPanel.SetActive(false);
 		TerraformPanel.SetActive(false);
 		weatherpanel.SetActive(false);
+		NextPageBtn.SetActive(true);
+		lastPageBtn.SetActive(false);
+		domeInfo1.SetActive(true);
+		domeInfo2.SetActive(false);
 	}
 	
-
 	void Update () 
 	{
 		if (Input.GetMouseButtonDown(0)) 
@@ -33,7 +40,6 @@ public class ShipControl : MonoBehaviour {
 				}
 			}
 	}
-
 
 	public void openTerraformDome()
 	{
@@ -53,6 +59,21 @@ public class ShipControl : MonoBehaviour {
 		weatherpanel.SetActive(true);
 		TerraformPanel.SetActive(false);
 		ShipPanel.SetActive(false);
+	}
+
+	public void NextPage()
+	{
+		NextPageBtn.SetActive(false);
+		domeInfo1.SetActive(false);
+		domeInfo2.SetActive(true);
+		lastPageBtn.SetActive(true);
+	}
+	public void LastPage()
+	{
+		NextPageBtn.SetActive(true);
+		domeInfo1.SetActive(true);
+		domeInfo2.SetActive(false);
+		lastPageBtn.SetActive(false);
 	}
 
 }

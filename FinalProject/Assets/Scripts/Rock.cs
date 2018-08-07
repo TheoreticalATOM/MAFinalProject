@@ -7,8 +7,8 @@ public class Rock : MonoBehaviour {
 	public ResorceManager resourceStats;
 	public GameObject RockBase;
 	public GameObject RockResource;
-
 	public int carbonCollected;
+	public float TimeScale;
 
 
 	void Start () 
@@ -29,11 +29,25 @@ public class Rock : MonoBehaviour {
 				{
                     if (hit.transform.gameObject == RockResource)
 					{
-						RockResource.SetActive(false);
-						RockBase.SetActive(true);
-						resourceStats.CarbonStat += carbonCollected;
+						StartCoroutine ("RockRegen");
 					}
 				}
 			}
 	}
+ 
+	IEnumerator RockRegen()
+	{	
+		RockResource.SetActive(false);
+		RockBase.SetActive(true);
+		resourceStats.CarbonStat += carbonCollected;
+
+		float progress = 0;
+		while(progress <=10000)
+		{
+			progress += Time.deltaTime * TimeScale;
+			yield return null;
+		}
+		RockResource.SetActive(true);
+	}
+
 }

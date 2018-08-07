@@ -17,11 +17,17 @@ public class TreeSpawner : MonoBehaviour {
 	public float SunSpeed;
 	public float treeLife;
 
+	public GameObject TreeModSnow;
+	public Material StartTexture;
+	public Material SnowTexture;
+
+
 	void Start () 
 	{
 		TreeMod = this.transform.GetChild(0).gameObject;
 		SystemStats = GameObject.Find("Manager").GetComponent<SystemManager>();
 		TreeMod.SetActive(false);
+		StartTexture = TreeMod.GetComponent<MeshRenderer>().material;
 
 	}
 	
@@ -33,54 +39,24 @@ public class TreeSpawner : MonoBehaviour {
 			TreeMod.SetActive(true);
 			watered = 100;
 			sunned = 100;
-			if(SystemStats.snowing == true)
-			{
-				Snowy += SnowSpeed;
-			}
-			if(SystemStats.snowing == false)
-			{
-				Snowy -=SnowSpeed;
-			}
-		}
 
-		if (Terraformed == false)
-		{
-			if (TreeAlive == true)
-			{
-				TreeMod.SetActive(true);
-			}
-			if(treeLife >= 50)
-			{
-				TreeAlive = true;
-			}
-			if(Snowy >= 50)
-			{
-				//TODO: make snowtexture
-			}
-			if(Snowy <50)
-			{
-				//TODO: remove the snow texture i havent made yet
-			}
 			if(SystemStats.raining == true)
 			{
-				watered += WaterSpeed;
-				if(Snowy > 0)
-				{
-					Snowy -= MeltSpeed;
-				}
+				TreeMod.GetComponent<MeshRenderer>().material = StartTexture;
 			}
 			if(SystemStats.sunny == true)
 			{
-				sunned += SunSpeed;
-				if(Snowy > 0)
-				{
-					Snowy -= MeltSpeed;
-				}
+				TreeMod.GetComponent<MeshRenderer>().material = StartTexture;
+			}
+
+			if(SystemStats.thunder == true)
+			{
+				TreeMod.GetComponent<MeshRenderer>().material = StartTexture;
 			}
 
 			if(SystemStats.snowing == true)
 			{
-				Snowy += SnowSpeed;
+				TreeMod.GetComponent<MeshRenderer>().material = SnowTexture;
 			}
 		}
 	}

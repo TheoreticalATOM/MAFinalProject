@@ -13,6 +13,11 @@ public class Terraform : MonoBehaviour
 	public Vector3 FinalScale3;
 	public Vector3 FinalScale4;
 	public Vector3 FinalScale5;
+	public Vector3 FinalScale6;
+	public Vector3 FinalScale7;
+	public Vector3 FinalScale8;
+	public Vector3 FinalScale9;
+	public Vector3 FinalScale10;
 	public int sphereLevel;
 
 	public GameObject UpgradeButton; //Note: Both Buttons the same but different functions
@@ -81,6 +86,56 @@ public class Terraform : MonoBehaviour
 				StartCoroutine("ScaleSphere5");				
 			}
 		}
+		if (sphereLevel == 5)
+		{
+			if(resourceStats.CarbonStat >= 100 && resourceStats.PowerSpare >= 120 && resourceStats.WaterStat >= 170)
+			{
+				resourceStats.CarbonStat -= 100;
+				resourceStats.PowerUsed += 120;
+				resourceStats.WaterStat -= 170;
+				StartCoroutine("ScaleSphere6");				
+			}
+		}
+		if (sphereLevel == 6)
+		{
+			if(resourceStats.CarbonStat >= 120 && resourceStats.PowerSpare >= 140 && resourceStats.WaterStat >= 200)
+			{
+				resourceStats.CarbonStat -= 120;
+				resourceStats.PowerUsed += 140;
+				resourceStats.WaterStat -= 200;
+				StartCoroutine("ScaleSphere7");				
+			}
+		}
+		if (sphereLevel == 7)
+		{
+			if(resourceStats.CarbonStat >= 140 && resourceStats.PowerSpare >= 160 && resourceStats.WaterStat >= 220)
+			{
+				resourceStats.CarbonStat -= 140;
+				resourceStats.PowerUsed += 160;
+				resourceStats.WaterStat -= 220;
+				StartCoroutine("ScaleSphere8");				
+			}
+		}
+		if (sphereLevel == 8)
+		{
+			if(resourceStats.CarbonStat >= 160 && resourceStats.PowerSpare >= 180 && resourceStats.WaterStat >= 250)
+			{
+				resourceStats.CarbonStat -= 160;
+				resourceStats.PowerUsed += 180;
+				resourceStats.WaterStat -= 250;
+				StartCoroutine("ScaleSphere9");				
+			}
+		}
+		if (sphereLevel == 9)
+		{
+			if(resourceStats.CarbonStat >= 180 && resourceStats.PowerSpare >= 200 && resourceStats.WaterStat >= 300)
+			{
+				resourceStats.CarbonStat -= 180;
+				resourceStats.PowerUsed += 200;
+				resourceStats.WaterStat -= 300;
+				StartCoroutine("ScaleSphere10");				
+			}
+		}
 	}
 
 	IEnumerator ScaleSphere1()
@@ -101,6 +156,12 @@ public class Terraform : MonoBehaviour
 	GameGrind.Journal.Increment("Dome Level 3", 1);
 	GameGrind.Journal.Increment("Dome Level 4", 1);
 	GameGrind.Journal.Increment("Dome Level 5", 1);
+	GameGrind.Journal.Increment("Dome Level 6", 1);
+	GameGrind.Journal.Increment("Dome Level 7", 1);
+	GameGrind.Journal.Increment("Dome Level 8", 1);
+	GameGrind.Journal.Increment("Dome Level 9", 1);
+	GameGrind.Journal.Increment("Dome Level 10", 1);
+
 	}
 
 
@@ -121,6 +182,11 @@ public class Terraform : MonoBehaviour
 	GameGrind.Journal.Increment("Dome Level 3", 1);
 	GameGrind.Journal.Increment("Dome Level 4", 1);
 	GameGrind.Journal.Increment("Dome Level 5", 1);
+	GameGrind.Journal.Increment("Dome Level 6", 1);
+	GameGrind.Journal.Increment("Dome Level 7", 1);
+	GameGrind.Journal.Increment("Dome Level 8", 1);
+	GameGrind.Journal.Increment("Dome Level 9", 1);
+	GameGrind.Journal.Increment("Dome Level 10", 1);
 	}
 
 
@@ -140,6 +206,11 @@ public class Terraform : MonoBehaviour
 	GameGrind.Journal.Increment("Dome Level 3", 1);
 	GameGrind.Journal.Increment("Dome Level 4", 1);
 	GameGrind.Journal.Increment("Dome Level 5", 1);
+	GameGrind.Journal.Increment("Dome Level 6", 1);
+	GameGrind.Journal.Increment("Dome Level 7", 1);
+	GameGrind.Journal.Increment("Dome Level 8", 1);
+	GameGrind.Journal.Increment("Dome Level 9", 1);
+	GameGrind.Journal.Increment("Dome Level 10", 1);
 	}
 
 
@@ -158,6 +229,11 @@ public class Terraform : MonoBehaviour
 	UpgradeButton.SetActive(true);
 	GameGrind.Journal.Increment("Dome Level 4", 1);
 	GameGrind.Journal.Increment("Dome Level 5", 1);
+	GameGrind.Journal.Increment("Dome Level 6", 1);
+	GameGrind.Journal.Increment("Dome Level 7", 1);
+	GameGrind.Journal.Increment("Dome Level 8", 1);
+	GameGrind.Journal.Increment("Dome Level 9", 1);
+	GameGrind.Journal.Increment("Dome Level 10", 1);
 	}
 
 
@@ -173,12 +249,100 @@ public class Terraform : MonoBehaviour
 	}
 	transform.localScale = FinalScale5;
 	sphereLevel += 1;
-	FullyUpgraded.SetActive(true);
+	UpgradeButton.SetActive(true);
 	GameGrind.Journal.Increment("Dome Level 5", 1);
+	GameGrind.Journal.Increment("Dome Level 6", 1);
+	GameGrind.Journal.Increment("Dome Level 7", 1);
+	GameGrind.Journal.Increment("Dome Level 8", 1);
+	GameGrind.Journal.Increment("Dome Level 9", 1);
+	GameGrind.Journal.Increment("Dome Level 10", 1);
 	}
 
+	IEnumerator ScaleSphere6()
+	{
+		float progress = 0;
+	while(progress <=1)
+	{
+		transform.localScale = Vector3.Lerp(FinalScale5, FinalScale6, progress);
+		progress += Time.deltaTime * TimeScale;
+		UpgradeButton.SetActive(false);
+		yield return null;
+	}
+	transform.localScale = FinalScale6;
+	sphereLevel += 1;
+	UpgradeButton.SetActive(true);
+	GameGrind.Journal.Increment("Dome Level 6", 1);
+	GameGrind.Journal.Increment("Dome Level 7", 1);
+	GameGrind.Journal.Increment("Dome Level 8", 1);
+	GameGrind.Journal.Increment("Dome Level 9", 1);
+	GameGrind.Journal.Increment("Dome Level 10", 1);
+	}
+	IEnumerator ScaleSphere7()
+	{
+		float progress = 0;
+	while(progress <=1)
+	{
+		transform.localScale = Vector3.Lerp(FinalScale6, FinalScale7, progress);
+		progress += Time.deltaTime * TimeScale;
+		UpgradeButton.SetActive(false);
+		yield return null;
+	}
+	transform.localScale = FinalScale7;
+	sphereLevel += 1;
+	UpgradeButton.SetActive(true);
+	GameGrind.Journal.Increment("Dome Level 7", 1);
+	GameGrind.Journal.Increment("Dome Level 8", 1);
+	GameGrind.Journal.Increment("Dome Level 9", 1);
+	GameGrind.Journal.Increment("Dome Level 10", 1);
+	}
 
-
-
+	IEnumerator ScaleSphere8()
+	{
+		float progress = 0;
+	while(progress <=1)
+	{
+		transform.localScale = Vector3.Lerp(FinalScale7, FinalScale8, progress);
+		progress += Time.deltaTime * TimeScale;
+		UpgradeButton.SetActive(false);
+		yield return null;
+	}
+	transform.localScale = FinalScale8;
+	sphereLevel += 1;
+	UpgradeButton.SetActive(true);
+	GameGrind.Journal.Increment("Dome Level 8", 1);
+	GameGrind.Journal.Increment("Dome Level 9", 1);
+	GameGrind.Journal.Increment("Dome Level 10", 1);
+	}
+	IEnumerator ScaleSphere9()
+	{
+		float progress = 0;
+	while(progress <=1)
+	{
+		transform.localScale = Vector3.Lerp(FinalScale8, FinalScale9, progress);
+		progress += Time.deltaTime * TimeScale;
+		UpgradeButton.SetActive(false);
+		yield return null;
+	}
+	transform.localScale = FinalScale9;
+	sphereLevel += 1;
+	UpgradeButton.SetActive(true);
+	GameGrind.Journal.Increment("Dome Level 9", 1);
+	GameGrind.Journal.Increment("Dome Level 10", 1);
+	}
+	IEnumerator ScaleSphere10()
+	{
+		float progress = 0;
+	while(progress <=1)
+	{
+		transform.localScale = Vector3.Lerp(FinalScale9, FinalScale10, progress);
+		progress += Time.deltaTime * TimeScale;
+		UpgradeButton.SetActive(false);
+		yield return null;
+	}
+	transform.localScale = FinalScale10;
+	sphereLevel += 1;
+	FullyUpgraded.SetActive(true);
+	GameGrind.Journal.Increment("Dome Level 10", 1);
+	}
 
 }
