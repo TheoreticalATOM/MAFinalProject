@@ -105,4 +105,9 @@ public class MenuControl : MonoBehaviour {
 		Application.OpenURL("https://twitter.com/TheoreticalATOM");
 	}
 
+	public void musiclink()
+	{
+		Application.OpenURL("https://gooseninja.itch.io/space-music-pack");
+	}
+
 }
